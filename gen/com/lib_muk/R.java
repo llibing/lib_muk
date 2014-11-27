@@ -224,24 +224,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
         public static final int backgroundStacked=0x7f010030;
-        /** <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int borderColor=0x7f010071;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int borderWidth=0x7f010070;
         /**  A style that may be applied to Buttons placed within a
          LinearLayout with the style buttonBarStyle to form a button bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -569,26 +551,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int queryHint=0x7f01005b;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int roundHeight=0x7f01006f;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int roundWidth=0x7f01006e;
         /**  SearchView dropdown background 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -897,18 +859,16 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f07000b;
+        public static final int abc_search_url_text_holo=0x7f070009;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
-        public static final int alpha_black=0x7f070004;
-        public static final int alpha_white=0x7f070003;
-        public static final int dark_blue=0x7f070005;
-        public static final int dark_blue_press=0x7f070006;
-        public static final int gray=0x7f070008;
-        public static final int gray_light=0x7f070007;
-        public static final int gray_press=0x7f070009;
-        public static final int window_bg=0x7f07000a;
+        public static final int dark_blue=0x7f070003;
+        public static final int dark_blue_press=0x7f070004;
+        public static final int gray=0x7f070006;
+        public static final int gray_light=0x7f070005;
+        public static final int gray_press=0x7f070007;
+        public static final int window_bg=0x7f070008;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1124,14 +1084,11 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int common_btn_in_black=0x7f020057;
-        public static final int common_btn_in_white=0x7f020058;
-        public static final int ic_launcher=0x7f020059;
-        public static final int intro_bg=0x7f02005a;
-        public static final int intro_btn_start=0x7f02005b;
-        public static final int logo_both_v=0x7f02005c;
-        public static final int logo_vw=0x7f02005d;
-        public static final int xlistview_arrow=0x7f02005e;
+        public static final int ic_launcher=0x7f020057;
+        public static final int intro_bg=0x7f020058;
+        public static final int intro_btn_start=0x7f020059;
+        public static final int logo_both_v=0x7f02005a;
+        public static final int logo_vw=0x7f02005b;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1145,7 +1102,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05004d;
+        public static final int action_settings=0x7f05003f;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1194,24 +1151,10 @@ containing a value of this type.
         public static final int tabMode=0x7f050002;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
-        public static final int topbar=0x7f05003f;
-        public static final int topbar_left_btn=0x7f050041;
-        public static final int topbar_progress=0x7f050044;
-        public static final int topbar_right_btn=0x7f050042;
-        public static final int topbar_right_extra_widget=0x7f050043;
-        public static final int topbar_title=0x7f050040;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int view_pager=0x7f05003c;
         public static final int withText=0x7f05000c;
-        public static final int xlistview_footer_content=0x7f050045;
-        public static final int xlistview_footer_hint_textview=0x7f050047;
-        public static final int xlistview_footer_progressbar=0x7f050046;
-        public static final int xlistview_header_arrow=0x7f05004b;
-        public static final int xlistview_header_content=0x7f050048;
-        public static final int xlistview_header_hint_textview=0x7f05004a;
-        public static final int xlistview_header_progressbar=0x7f05004c;
-        public static final int xlistview_header_text=0x7f050049;
     }
     public static final class integer {
         /**  The maximum number of action buttons that should be permitted within
@@ -1267,21 +1210,11 @@ containing a value of this type.
         public static final int intro=0x7f030019;
         public static final int intro_first=0x7f03001a;
         public static final int support_simple_spinner_dropdown_item=0x7f03001b;
-        public static final int topbar=0x7f03001c;
-        public static final int xlistview_footer=0x7f03001d;
-        public static final int xlistview_header=0x7f03001e;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
     }
     public static final class string {
-        public static final int Task_DoSuccess=0x7f0a0016;
-        public static final int Task_DownloadComplete=0x7f0a0019;
-        public static final int Task_DownloadFail=0x7f0a001a;
-        public static final int Task_Downloading=0x7f0a0017;
-        public static final int Task_LoadFail=0x7f0a0015;
-        public static final int Task_PleaseWait=0x7f0a0014;
-        public static final int Task_StopDownload=0x7f0a0018;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0a0001;
@@ -1322,22 +1255,9 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
-        public static final int action_settings=0x7f0a0023;
+        public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
-        public static final int cannot_download=0x7f0a0012;
-        public static final int download_no_sdcard_dlg_msg=0x7f0a000f;
-        public static final int download_no_sdcard_dlg_title=0x7f0a000e;
-        public static final int download_pending=0x7f0a0013;
-        public static final int download_sdcard_busy_dlg_msg=0x7f0a0011;
-        public static final int download_sdcard_busy_dlg_title=0x7f0a0010;
-        public static final int hello_world=0x7f0a0022;
-        public static final int xlistview_footer_hint_nomore=0x7f0a0020;
-        public static final int xlistview_footer_hint_normal=0x7f0a001f;
-        public static final int xlistview_footer_hint_ready=0x7f0a0021;
-        public static final int xlistview_header_hint_loading=0x7f0a001e;
-        public static final int xlistview_header_hint_normal=0x7f0a001c;
-        public static final int xlistview_header_hint_ready=0x7f0a001d;
-        public static final int xlistview_load_error=0x7f0a001b;
+        public static final int hello_world=0x7f0a000e;
     }
     public static final class style {
         /** 
@@ -1360,31 +1280,9 @@ containing a value of this type.
         res/values-v11/styles.xml on API 14+ devices.
     
  API 14 theme customizations can go here. 
-
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
-
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f0b008b;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
- Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0b008c;
@@ -2811,87 +2709,6 @@ containing a value of this type.
           @attr name android:windowAnimationStyle
         */
         public static final int MenuView_android_windowAnimationStyle = 0;
-        /** Attributes that can be used with a RoundAngleImageView.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #RoundAngleImageView_borderColor com.lib_muk:borderColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundAngleImageView_borderWidth com.lib_muk:borderWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundAngleImageView_roundHeight com.lib_muk:roundHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #RoundAngleImageView_roundWidth com.lib_muk:roundWidth}</code></td><td></td></tr>
-           </table>
-           @see #RoundAngleImageView_borderColor
-           @see #RoundAngleImageView_borderWidth
-           @see #RoundAngleImageView_roundHeight
-           @see #RoundAngleImageView_roundWidth
-         */
-        public static final int[] RoundAngleImageView = {
-            0x7f01006e, 0x7f01006f, 0x7f010070, 0x7f010071
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.lib_muk.R.attr#borderColor}
-          attribute's value can be found in the {@link #RoundAngleImageView} array.
-
-
-          <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lib_muk:borderColor
-        */
-        public static final int RoundAngleImageView_borderColor = 3;
-        /**
-          <p>This symbol is the offset where the {@link com.lib_muk.R.attr#borderWidth}
-          attribute's value can be found in the {@link #RoundAngleImageView} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lib_muk:borderWidth
-        */
-        public static final int RoundAngleImageView_borderWidth = 2;
-        /**
-          <p>This symbol is the offset where the {@link com.lib_muk.R.attr#roundHeight}
-          attribute's value can be found in the {@link #RoundAngleImageView} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lib_muk:roundHeight
-        */
-        public static final int RoundAngleImageView_roundHeight = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.lib_muk.R.attr#roundWidth}
-          attribute's value can be found in the {@link #RoundAngleImageView} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lib_muk:roundWidth
-        */
-        public static final int RoundAngleImageView_roundWidth = 0;
         /** Attributes that can be used with a SearchView.
            <p>Includes the following attributes:</p>
            <table>
