@@ -5,11 +5,8 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="lib" path="libs/AMap_3DMap_V2.2.1.jar"/>
-	<classpathentry kind="lib" path="libs/AMap_Services_V2.2.1.jar"/>
-	<classpathentry kind="lib" path="libs/Android_Location_V1.1.2.jar"/>
-	<classpathentry kind="lib" path="libs/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="libs/PanoramaGL_0.2-beta.jar"/>
-	<classpathentry exported="true" kind="lib" path="E:/androidOutsourcing/faw_vw/faxutils/bin/fax_utils.jar" sourcepath="/fax_utils/src"/>
+	<classpathentry kind="lib" path="libs/indexsidebar.jar"/>
+	<classpathentry kind="lib" path="libs/libammsdk.jar"/>
+	<classpathentry kind="src" path="/faw-vw"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

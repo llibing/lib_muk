@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
          <activity android:name=".MainActivity" android:launchMode="singleTask" android:screenOrientation="portrait"/>
+         <activity android:name=".FragmentContainLandscape" android:screenOrientation="landscape"/>
+         <activity android:name=".FragmentContain" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu_texts">
+        <item >全部课程</item>
+        <item >我的课程</item>
+        <item >我的消息</item>
+        <item >下载</item>
+        <item >设置</item>
+    </string-array>
+</resources>
