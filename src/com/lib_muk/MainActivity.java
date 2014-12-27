@@ -11,6 +11,7 @@ import com.lib_muk.model.SlidingItem;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,8 +44,7 @@ public class MainActivity extends FragmentActivity {
       //使SlidingMenu附加在Activity上
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         menu.setMenu(createMenu());
-//        getFragment(1);
-//        switchFragment(getFragment(0));
+        switchFragment(getFragment(1));
 	}
 	@Override
 	protected void onDestroy() {
@@ -55,10 +55,10 @@ public class MainActivity extends FragmentActivity {
 	public void showMenu(){
 		menu.showMenu();
 	}
-//	public void switchFragment(int position){
+	public void switchFragment(int position){
 //		setTitle(menus[position]);
-//		switchFragment(getFragment(position));
-//	}
+		switchFragment(getFragment(position));
+	}
 	public void switchFragment(Fragment fragment){
 		if(fragment instanceof HomeFragment)// 仅在主页面允许滑出，其他页面有菜单键
 			menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);//设置滑动的屏幕范围，该设置为全屏区域都可以滑动
@@ -99,7 +99,7 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onItemClick(SlidingItem t, View view, int position, long id) {
 				super.onItemClick(t, view, position, id);
-				
+				 switchFragment(getFragment(position));
 			}
 			@Override
 			public List<SlidingItem> instanceNewList() throws Exception {
@@ -110,7 +110,7 @@ public class MainActivity extends FragmentActivity {
 		return menuView;
 	}
 	
-	private int nowShowingFragmentPosition=0;
+	private int nowShowingFragmentPosition=-1;
 	private Fragment getFragment(int position){
 		nowShowingFragmentPosition=position;
 		switch(position){

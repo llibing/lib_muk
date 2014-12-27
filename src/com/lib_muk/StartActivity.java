@@ -6,6 +6,7 @@ import com.fax.utils.view.pager.PointIndicator;
 import com.fax.utils.view.pager.SamePagerAdapter;
 import com.lib_muk.utils.frameAnim.Frame;
 import com.lib_muk.utils.frameAnim.FrameFactory;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;

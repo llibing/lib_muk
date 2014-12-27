@@ -4,5 +4,6 @@
     <string name="app_name">lib_muk</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="logo_topbar_settings">muk</string>
 
 </resources>

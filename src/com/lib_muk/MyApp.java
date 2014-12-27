@@ -16,10 +16,6 @@ import java.util.Map;
 import java.util.Random;
 import com.fax.utils.bitmap.BitmapManager;
 import com.fax.utils.http.HttpUtils;
-import com.fax.utils.http.WebviewCookieStore;
-import com.fax.utils.task.DownloadTask;
-
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
