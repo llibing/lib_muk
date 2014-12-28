@@ -8,4 +8,6 @@
     <color name="window_bg">#e5e5e5</color>
     <color name="gray_btn_bg">#bababa</color>
     <color name="background_gray">#CFCFCF</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="background_blace">#000000</color>
 </resources>

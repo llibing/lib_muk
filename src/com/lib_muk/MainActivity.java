@@ -7,6 +7,7 @@ import com.fax.utils.view.list.ObjectXAdapter;
 import com.fax.utils.view.list.ObjectXListView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.lib_muk.fragment.main.HomeFragment;
+import com.lib_muk.fragment.main.MyCourseFragment;
 import com.lib_muk.model.SlidingItem;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -86,6 +87,7 @@ public class MainActivity extends FragmentActivity {
 		View menuView=View.inflate(this, R.layout.activity_home_menu, null);
 		ObjectXListView listView = (ObjectXListView) menuView.findViewById(android.R.id.list);
 		listView.setPullRefreshEnable(false);
+		listView.setVerticalScrollBarEnabled(false);
 		listView.setAdapter(new ObjectXAdapter.SingleLocalPageAdapter<SlidingItem>() {
 			@Override
 			public View bindView(SlidingItem s, int position, View view) {
@@ -115,6 +117,7 @@ public class MainActivity extends FragmentActivity {
 		nowShowingFragmentPosition=position;
 		switch(position){
 		case 1: return new HomeFragment();
+		case 2: return new MyCourseFragment();
 		}
 		return new HomeFragment();
 	}

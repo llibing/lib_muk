@@ -3,11 +3,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+    <RelativeLayout
+        android:id="@+id/layout_top_header"
+        android:layout_width="match_parent"
+        android:layout_height="46dip"
+        android:background="@color/dark_red" >
+
+        <ImageView
+            android:id="@+id/imageViewWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/sliding_menu_icon" />
+        
+        
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTopic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/textViewTopic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/top_allcourse"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
+            
+            <ImageView
+	            android:id="@+id/imageViewTopic"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="3dp"
+	            android:src="@drawable/ic_menu_trangle_down" />
+        </LinearLayout>
+        
+        
+    </RelativeLayout>
    <com.fax.utils.view.list.ObjectXListView 
         android:id="@android:id/list"
 	    android:layout_width="match_parent"
 	    android:layout_height="0dp"
 	    android:layout_weight="1"/>
-
 </LinearLayout>
