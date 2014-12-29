@@ -35,25 +35,25 @@ public final class R {
 		public static final int xlistview_arrow = 0x7f02006b;
 	}
 	public static final class id {
-		public static final int topbar_content = 0x7f050050;
-		public static final int topbar_left_btn = 0x7f050052;
-		public static final int topbar_progress = 0x7f050055;
-		public static final int topbar_right_btn = 0x7f050053;
-		public static final int topbar_right_extra_widget = 0x7f050054;
-		public static final int topbar_title = 0x7f050051;
-		public static final int xlistview_footer_content = 0x7f050056;
-		public static final int xlistview_footer_hint_textview = 0x7f050058;
-		public static final int xlistview_footer_progressbar = 0x7f050057;
-		public static final int xlistview_header_arrow = 0x7f05005c;
-		public static final int xlistview_header_content = 0x7f050059;
-		public static final int xlistview_header_hint_textview = 0x7f05005b;
-		public static final int xlistview_header_progressbar = 0x7f05005d;
-		public static final int xlistview_header_text = 0x7f05005a;
+		public static final int topbar_content = 0x7f050051;
+		public static final int topbar_left_btn = 0x7f050053;
+		public static final int topbar_progress = 0x7f050056;
+		public static final int topbar_right_btn = 0x7f050054;
+		public static final int topbar_right_extra_widget = 0x7f050055;
+		public static final int topbar_title = 0x7f050052;
+		public static final int xlistview_footer_content = 0x7f050057;
+		public static final int xlistview_footer_hint_textview = 0x7f050059;
+		public static final int xlistview_footer_progressbar = 0x7f050058;
+		public static final int xlistview_header_arrow = 0x7f05005d;
+		public static final int xlistview_header_content = 0x7f05005a;
+		public static final int xlistview_header_hint_textview = 0x7f05005c;
+		public static final int xlistview_header_progressbar = 0x7f05005e;
+		public static final int xlistview_header_text = 0x7f05005b;
 	}
 	public static final class layout {
-		public static final int topbar = 0x7f030022;
-		public static final int xlistview_footer = 0x7f030023;
-		public static final int xlistview_header = 0x7f030024;
+		public static final int topbar = 0x7f030025;
+		public static final int xlistview_footer = 0x7f030026;
+		public static final int xlistview_header = 0x7f030027;
 	}
 	public static final class string {
 		public static final int Task_DoSuccess = 0x7f0a0016;

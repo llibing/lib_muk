@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <com.lib_muk.clickshow.ClickShowButton
+        android:text="App评分"
+        android:padding="16dp"
+        android:gravity="left"
+        android:background="@android:color/white"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"/>
+    <View style="@style/divHorizontal"/>
+    <com.lib_muk.clickshow.ClickShowButton 
+        android:text="检查新版本"
+        android:padding="16dp"
+        android:gravity="left"
+        android:background="@android:color/white"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"/>
+    <View style="@style/divHorizontal"/>
+    <com.lib_muk.clickshow.ClickShowButton 
+        android:id="@+id/more_setting_menu_list"
+        android:text="意见反馈"
+        android:padding="16dp"
+        android:gravity="left"
+        android:background="@android:color/white"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"/>
+     <View style="@style/divHorizontal"/>
+     <com.lib_muk.clickshow.ClickShowButton 
+        android:text="关于我们"
+        android:padding="16dp"
+        android:gravity="left"
+        android:background="@android:color/white"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"/>
+</LinearLayout>

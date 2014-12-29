@@ -6,8 +6,11 @@ import java.util.List;
 import com.fax.utils.view.list.ObjectXAdapter;
 import com.fax.utils.view.list.ObjectXListView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.lib_muk.fragment.main.DownloadCourseFragment;
 import com.lib_muk.fragment.main.HomeFragment;
 import com.lib_muk.fragment.main.MyCourseFragment;
+import com.lib_muk.fragment.main.MyInfoFragment;
+import com.lib_muk.fragment.main.SettingFragment;
 import com.lib_muk.model.SlidingItem;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -118,6 +121,9 @@ public class MainActivity extends FragmentActivity {
 		switch(position){
 		case 1: return new HomeFragment();
 		case 2: return new MyCourseFragment();
+		case 3: return new MyInfoFragment();
+		case 4: return new DownloadCourseFragment();
+		case 5: return new SettingFragment();
 		}
 		return new HomeFragment();
 	}

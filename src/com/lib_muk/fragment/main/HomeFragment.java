@@ -1,25 +1,19 @@
 package com.lib_muk.fragment.main;
 
 
-import com.fax.utils.view.TopBarContain;
-import com.fax.utils.view.list.ObjectXListView;
-import com.lib_muk.MyFragment;
 import com.lib_muk.R;
 import com.lib_muk.pulldownmenu.ConstantCategoryMenu;
 import com.lib_muk.pulldownmenu.DeviceUtility;
 import com.lib_muk.pulldownmenu.MenuUtility;
 import com.lib_muk.pulldownmenu.PulldownMenuView;
 import com.lib_muk.pulldownmenu.PulldownMenuView.OnMenuItemClickListener;
-import com.lib_muk.views.MyTopBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
