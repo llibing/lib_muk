@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <color name="dark_red">#FF0000</color>
-    <color name="dark_blue_press">#0061cd</color>
+   <color name="dark_red_press">#FF0000</color>
+    <color name="dark_red">#FF3030</color>
     <color name="gray_light">#b4b4b4</color>
     <color name="gray">#595656</color>
     <color name="gray_press">#353333</color>

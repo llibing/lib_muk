@@ -1,6 +1,7 @@
 package com.lib_muk.fragment.main;
 
 
+import com.lib_muk.MyFragment;
 import com.lib_muk.R;
 import com.lib_muk.pulldownmenu.ConstantCategoryMenu;
 import com.lib_muk.pulldownmenu.DeviceUtility;
@@ -23,7 +24,7 @@ import android.widget.TextView;
  * TODO
  * 全部课程 页卡 */
 
-public class HomeFragment extends MenuFragment{
+public class HomeFragment extends MyFragment{
 	public static final int Request_Home = 1;
 	public static final String TAG ="HomeFragment";
 	

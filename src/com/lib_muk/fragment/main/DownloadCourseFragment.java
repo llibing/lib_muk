@@ -1,6 +1,7 @@
 package com.lib_muk.fragment.main;
 
 
+import com.lib_muk.MyFragment;
 import com.lib_muk.R;
 import com.lib_muk.views.MyTopBar;
 
@@ -12,9 +13,9 @@ import android.view.View.OnClickListener;
 
 /**
  * TODO
- * 全部课程 页卡 */
+ * 下载 页卡 */
 
-public class DownloadCourseFragment extends MenuFragment{
+public class DownloadCourseFragment extends MyFragment{
 	public static final int Request_Home = 1;
 	public static final String TAG ="MyCourseFragment";
 	@Override

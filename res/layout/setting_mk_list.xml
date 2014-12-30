@@ -1,39 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-    <com.lib_muk.clickshow.ClickShowButton
-        android:text="App评分"
-        android:padding="16dp"
-        android:gravity="left"
-        android:background="@android:color/white"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"/>
-    <View style="@style/divHorizontal"/>
-    <com.lib_muk.clickshow.ClickShowButton 
-        android:text="检查新版本"
-        android:padding="16dp"
-        android:gravity="left"
-        android:background="@android:color/white"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"/>
-    <View style="@style/divHorizontal"/>
-    <com.lib_muk.clickshow.ClickShowButton 
-        android:id="@+id/more_setting_menu_list"
-        android:text="意见反馈"
-        android:padding="16dp"
-        android:gravity="left"
-        android:background="@android:color/white"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"/>
-     <View style="@style/divHorizontal"/>
-     <com.lib_muk.clickshow.ClickShowButton 
-        android:text="关于我们"
-        android:padding="16dp"
-        android:gravity="left"
-        android:background="@android:color/white"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"/>
-</LinearLayout>
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <View style="@style/divHorizontal" />
+      <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.lib_muk.clickshow.ClickShowButton
+                android:id="@+id/setting_mk_list_clear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="left"
+                android:padding="10dp"
+                android:text="清除缓存" />
+        </LinearLayout>
+
+        <View style="@style/divHorizontal" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.lib_muk.clickshow.ClickShowButton
+                android:id="@+id/setting_mk_list_grade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="left"
+                android:padding="10dp"
+                android:text="App评分" />
+        </LinearLayout>
+
+        <View style="@style/divHorizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.lib_muk.clickshow.ClickShowButton
+                android:id="@+id/setting_mk_list_suggestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="left"
+                android:padding="10dp"
+                android:text="意见反馈" />
+        </LinearLayout>
+
+        <View style="@style/divHorizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="horizontal" 
+            android:layout_marginTop="30dp">
+
+            <com.lib_muk.clickshow.ClickShowButton
+                android:id="@+id/setting_mk_list_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="left"
+                android:padding="10dp"
+                android:text="检查更新" />
+        </LinearLayout>
+
+        <View style="@style/divHorizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.lib_muk.clickshow.ClickShowButton
+                 android:id="@+id/setting_mk_list_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="left"
+                android:padding="10dp"
+                android:text="关于我们" />
+        </LinearLayout>
+
+        <View style="@style/divHorizontal" />
+    </LinearLayout>
+
+</ScrollView>
