@@ -33,6 +33,12 @@ public class SettingFragment extends MyFragment{
 			}
 			
 		});
+		view.findViewById(R.id.setting_mk_list_update).setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view) {
+				Toast.makeText(context, "当前已是最新版本", Toast.LENGTH_LONG).show();
+			}
+		});
 		view.findViewById(R.id.setting_mk_list_suggestion).setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View view) {
