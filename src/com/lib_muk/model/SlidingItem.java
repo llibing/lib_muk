@@ -25,7 +25,6 @@ public class SlidingItem implements Serializable{
 	int id;
 	int imgId;
 	String slidingName;
-	
 	public SlidingItem(int id,int imgId, String slidingName) {
 		super();
 		this.id=id;

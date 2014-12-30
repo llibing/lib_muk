@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="欢迎提出您对本App的宝贵意见，您的意见就是我们不断完善的动力。"
+        android:text="欢迎提出您对本App的宝贵意见。"
         android:textSize="12sp" />
 
     <EditText

@@ -32,23 +32,23 @@ public final class R {
 		public static final int common_btn_in_black = 0x7f020058;
 		public static final int common_btn_in_white = 0x7f020059;
 		public static final int ic_launcher = 0x7f02005b;
-		public static final int xlistview_arrow = 0x7f02006c;
+		public static final int xlistview_arrow = 0x7f02006d;
 	}
 	public static final class id {
-		public static final int topbar_content = 0x7f050058;
-		public static final int topbar_left_btn = 0x7f05005a;
-		public static final int topbar_progress = 0x7f05005d;
-		public static final int topbar_right_btn = 0x7f05005b;
-		public static final int topbar_right_extra_widget = 0x7f05005c;
-		public static final int topbar_title = 0x7f050059;
-		public static final int xlistview_footer_content = 0x7f05005e;
-		public static final int xlistview_footer_hint_textview = 0x7f050060;
-		public static final int xlistview_footer_progressbar = 0x7f05005f;
-		public static final int xlistview_header_arrow = 0x7f050064;
-		public static final int xlistview_header_content = 0x7f050061;
-		public static final int xlistview_header_hint_textview = 0x7f050063;
-		public static final int xlistview_header_progressbar = 0x7f050065;
-		public static final int xlistview_header_text = 0x7f050062;
+		public static final int topbar_content = 0x7f050057;
+		public static final int topbar_left_btn = 0x7f050059;
+		public static final int topbar_progress = 0x7f05005c;
+		public static final int topbar_right_btn = 0x7f05005a;
+		public static final int topbar_right_extra_widget = 0x7f05005b;
+		public static final int topbar_title = 0x7f050058;
+		public static final int xlistview_footer_content = 0x7f05005d;
+		public static final int xlistview_footer_hint_textview = 0x7f05005f;
+		public static final int xlistview_footer_progressbar = 0x7f05005e;
+		public static final int xlistview_header_arrow = 0x7f050063;
+		public static final int xlistview_header_content = 0x7f050060;
+		public static final int xlistview_header_hint_textview = 0x7f050062;
+		public static final int xlistview_header_progressbar = 0x7f050064;
+		public static final int xlistview_header_text = 0x7f050061;
 	}
 	public static final class layout {
 		public static final int topbar = 0x7f030026;

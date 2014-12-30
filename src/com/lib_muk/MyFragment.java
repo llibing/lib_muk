@@ -1,13 +1,13 @@
 package com.lib_muk;
 
 
+
 import java.io.Serializable;
 
 import com.fax.utils.view.TopBarContain;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -47,28 +47,22 @@ public class MyFragment extends Fragment {
 		return (T) getArguments().getSerializable(c.getName());
 	}
 
-	public void startFragment(Fragment fragment){
-		FragmentContain.start(getActivity(), fragment);
-	}
-	public void startFragment(Class<? extends Fragment> c, Bundle bundle, int request){
-		FragmentContain.start(getActivity(), c, bundle, request);
-	}
+//	public void startFragment(Fragment fragment){
+//		FragmentContain.start(getActivity(), fragment);
+//	}
+//	public void startFragment(Class<? extends Fragment> c, Bundle bundle, int request){
+//		FragmentContain.start(getActivity(), c, bundle, request);
+//	}
 	public void addFragment(Fragment fragment){
-		getFragmentManager().beginTransaction().add(R.id.contain, fragment, fragment.getClass().getSimpleName())
-			.addToBackStack(fragment.getClass().getSimpleName()).commit();
+		getFragmentManager().beginTransaction().add(R.id.content, fragment, fragment.getClass().getName()).addToBackStack(null).commit();
 	}
 	public void replaceFragment(Fragment fragment){
-		getFragmentManager().beginTransaction().replace(R.id.contain, fragment, fragment.getClass().getName()).commit();
+		getFragmentManager().beginTransaction().replace(R.id.content, fragment, fragment.getClass().getName()).commit();
 	}
 	public void addFragment(FragmentTransaction ft, Fragment fragment){
-		ft.add(R.id.contain, fragment, fragment.getClass().getName()).addToBackStack(null);
+		ft.add(R.id.content, fragment, fragment.getClass().getName()).addToBackStack(null);
 	}
-	public boolean isPortrait(){
-		return getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
-	}
-	public boolean isLandscape(){
-		return !isPortrait();
-	}
+	
 	public void backStack(){
 		if(context instanceof FragmentActivity){
 			if(!((FragmentActivity) context).getSupportFragmentManager().popBackStackImmediate()){

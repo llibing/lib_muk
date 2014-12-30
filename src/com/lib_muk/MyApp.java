@@ -1,14 +1,13 @@
 package com.lib_muk;
 
+
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.lang.reflect.Field;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,16 +15,19 @@ import java.util.Map;
 import java.util.Random;
 import com.fax.utils.bitmap.BitmapManager;
 import com.fax.utils.http.HttpUtils;
+import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -34,11 +36,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class MyApp extends Application {
+	public static final String Host="";
+	public static final String AddUrl=""; 
 	private static MyApp myApp;
-
+	public static final String TAG ="MyApp";
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -51,6 +54,9 @@ public class MyApp extends Application {
 	public static SharedPreferences getDefaultSp(){
 		return PreferenceManager.getDefaultSharedPreferences(myApp);
 	}
+	
+	
+	
 	/**
 	 * 判断是否已经写入过这个key，没写入就现在写入
 	 * @param key 值
@@ -68,8 +74,39 @@ public class MyApp extends Application {
 	public static float convertToDp(int value){
 		return myApp.getResources().getDisplayMetrics().density * value;
 	}
+	/**
+	 * 检测网络连接状态
+	 * 
+	 */
+    public static boolean isNetworkConnected(Context context) { 
+    	if (context != null) { 
+    	ConnectivityManager mConnectivityManager = (ConnectivityManager) context 
+    	.getSystemService(Context.CONNECTIVITY_SERVICE); 
+    	NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo(); 
+    	if (mNetworkInfo != null) { 
+    	return mNetworkInfo.isAvailable(); 
+    	} 
+    	} 
+    	return false; 
+    	} 
+    /**
+	 * 显示网络信息
+	 * 
+	 */
+	public static void isNetworkConnectedShowDialog(final Context context){
+		new AlertDialog.Builder(context).setTitle("               数据连接提示")
+		.setMessage("网络不可用，请检测是否连接网络?")
+		.setNegativeButton("取消", null)
+		.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent intent = new Intent("android.settings.WIRELESS_SETTINGS");  
+				context.startActivity(intent);  
+			}
+		})
+		.create().show();
+	}
 	
-
+	
 	/**完全删除一个文件夹*/
 	public static void delectFile(File file){
 		if(file==null) return;
@@ -147,9 +184,9 @@ public class MyApp extends Application {
 		return createIntent(ss).getExtras();
 	}
 	
-	public static File getCrashDir() {
-		return myApp.getExternalCacheDir().getParentFile();
-	}
+//	public static File getCrashDir() {
+//		return myApp.getExternalCacheDir().getParentFile();
+//	}
 	/**
 	 * UncaughtException处理类,当程序发生Uncaught异常的时候,有该类来接管程序,并记录发送错误报告.
 	 * 
@@ -229,7 +266,7 @@ public class MyApp extends Application {
 				@Override
 				public void run() {
 					Looper.prepare();
-					Toast.makeText(mContext, "捕获到了异常，已记录到"+MyApp.getCrashDir().getPath(), Toast.LENGTH_LONG).show();
+//					Toast.makeText(mContext, "捕获到了异常，已记录到"+MyApp.getCrashDir().getPath(), Toast.LENGTH_LONG).show();
 					Looper.loop();
 				}
 			}.start();
@@ -300,15 +337,15 @@ public class MyApp extends Application {
 				long timestamp = System.currentTimeMillis();
 				String time = formatter.format(new Date());
 				String fileName = "crash-" + time + "-" + timestamp + ".log";
-				if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-					File dir = MyApp.getCrashDir();
-					if (!dir.exists()) {
-						dir.mkdirs();
-					}
-					FileOutputStream fos = new FileOutputStream(new File(dir.getPath(),fileName));
-					fos.write(sb.toString().getBytes());
-					fos.close();
-				}
+//				if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+//					File dir = MyApp.getCrashDir();
+//					if (!dir.exists()) {
+//						dir.mkdirs();
+//					}
+//					FileOutputStream fos = new FileOutputStream(new File(dir.getPath(),fileName));
+//					fos.write(sb.toString().getBytes());
+//					fos.close();
+//				}
 				return fileName;
 			} catch (Exception e) {
 				Log.e(TAG, "an error occured while writing file...", e);
@@ -316,4 +353,6 @@ public class MyApp extends Application {
 			return null;
 		}
 	}
+	
+
 }

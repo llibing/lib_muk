@@ -11,7 +11,6 @@ import android.view.View.OnClickListener;
 import com.fax.utils.view.TopBarContain;
 import com.lib_muk.MyApp;
 import com.lib_muk.R;
-import com.lib_muk.fragment.main.MenuFragment;
 
 public class MyTopBar extends TopBarContain {
 
