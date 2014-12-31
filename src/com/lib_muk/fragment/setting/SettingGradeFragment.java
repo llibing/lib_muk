@@ -16,13 +16,13 @@ import android.view.ViewGroup;
  * 
 */
 
-public class SettingAboutFragment extends MyFragment{
-	public static final String TAG ="SettingAboutFragment";
+public class SettingGradeFragment extends MyFragment{
+	public static final String TAG ="SettingGradeFragment";
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		 View view = inflater.inflate(R.layout.setting_mk_list_about, container, false);
-		 final SlidingItem illegal = getSerializableExtra(SlidingItem.class);
-		 MyTopBar topBar = (MyTopBar) new MyTopBar(context).setLeftBack().setTitle("关于我们").setContentView(view);
-		return topBar;
+		 View view = inflater.inflate(R.layout.setting_mk_list_grade, container, false);
+		 
+		 
+		return new MyTopBar(context).setLeftBack().setTitle("满意度调查").setContentView(view);
 	}
 }

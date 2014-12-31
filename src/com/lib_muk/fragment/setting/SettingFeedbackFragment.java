@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 */
 
 public class SettingFeedbackFragment extends MyFragment{
-	public static final String TAG ="SettingFragment";
+	public static final String TAG ="SettingFeedbackFragment";
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		 View view = inflater.inflate(R.layout.setting_mk_list_feedback, container, false);

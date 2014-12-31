@@ -29,6 +29,7 @@
 
         <View style="@style/divHorizontal" />
         <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:background="@android:color/white"
@@ -42,7 +43,7 @@
                 android:background="@android:color/white"
                 android:gravity="left"
                 android:padding="10dp"
-                android:text="App评分" />
+                android:text="满意度调查" />
         </LinearLayout>
 
         <View style="@style/divHorizontal" />
