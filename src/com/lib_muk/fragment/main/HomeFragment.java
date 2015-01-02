@@ -44,6 +44,13 @@ public class HomeFragment extends MyFragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.home_mk_list, container, false);
+		init(view);
+		return view;
+	}
+	/**
+	 * 初始化
+	 */
+	private void init(View view){
 		ivTopic = (ImageView) view.findViewById(R.id.imageViewTopic);
 		imageViewWeather = (ImageView) view.findViewById(R.id.imageViewWeather);
 		imageViewWeather.setOnClickListener(imageOnClickListener);
@@ -62,8 +69,8 @@ public class HomeFragment extends MyFragment{
     			ConstantCategoryMenu.newsImageRes,
     			ConstantCategoryMenu.newsMenuTexts,
     			height,layoutHeader);
-		return view;
 	}
+	
 	 /**
      * 显示PulldownMenuView
      */
