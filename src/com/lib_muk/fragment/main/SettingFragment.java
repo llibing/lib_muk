@@ -6,6 +6,7 @@ import com.lib_muk.MyFragment;
 import com.lib_muk.R;
 import com.lib_muk.fragment.setting.SettingAboutFragment;
 import com.lib_muk.fragment.setting.SettingFeedbackFragment;
+import com.lib_muk.fragment.setting.SettingGradeFragment;
 import com.lib_muk.model.SlidingItem;
 import com.lib_muk.views.MyTopBar;
 
@@ -26,6 +27,28 @@ public class SettingFragment extends MyFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		 View view = inflater.inflate(R.layout.setting_mk_list, container, false);
 		
+		//满意度调查
+		 view.findViewById(R.id.setting_mk_list_grade).setOnClickListener(new View.OnClickListener(){
+				@Override
+				public void onClick(View view) {
+					addFragment(MyApp.createFragment(SettingGradeFragment.class));
+				}
+			});
+		//意见反馈
+		view.findViewById(R.id.setting_mk_list_suggestion).setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view) {
+				addFragment(MyApp.createFragment(SettingFeedbackFragment.class));
+			}
+		});
+		//检查更新
+		view.findViewById(R.id.setting_mk_list_update).setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view) {
+				Toast.makeText(context, "当前已是最新版本", Toast.LENGTH_LONG).show();
+			}
+		});
+		//关于我们
 		view.findViewById(R.id.setting_mk_list_about).setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View view) {
@@ -33,19 +56,6 @@ public class SettingFragment extends MyFragment{
 			}
 			
 		});
-		view.findViewById(R.id.setting_mk_list_update).setOnClickListener(new View.OnClickListener(){
-			@Override
-			public void onClick(View view) {
-				Toast.makeText(context, "当前已是最新版本", Toast.LENGTH_LONG).show();
-			}
-		});
-		view.findViewById(R.id.setting_mk_list_suggestion).setOnClickListener(new View.OnClickListener(){
-			@Override
-			public void onClick(View view) {
-				addFragment(MyApp.createFragment(SettingFeedbackFragment.class));
-			}
-		});
-		
 		return new MyTopBar(getActivity()).setLeftBtn("", R.drawable.sliding_menu_icon, new OnClickListener() {
 			@Override
 			public void onClick(View v) {

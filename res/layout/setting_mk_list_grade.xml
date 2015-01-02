@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="你在多大程度上愿意向你的朋友推荐此学习软件！"
+        android:textSize="13sp" />
+
+  
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_weight="1"
+        android:gravity="top|left"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+
+      <RadioGroup 
+		android:id="@+id/radioGroup"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:checkedButton="@+id/rad3" 
+		android:orientation="vertical"
+		>
+			
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton"  
+            android:text="10分（非常满意）" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="9分" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="8分" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="7分" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="6分" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="5分" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="4分" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="3分" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="2分" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="1分" />
+        <View style="@style/divHorizontal" />
+        <RadioButton
+            android:id="@+id/radioButton11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"  
+            android:drawableRight="@drawable/btn_radiobutton" 
+            android:text="0分（绝对不会）" />
+</RadioGroup>
+    </LinearLayout>
+
+    
+
+    
+    <Button
+        android:layout_marginTop="8dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@drawable/btn_blue"
+        android:id="@+id/commit_button"
+        android:text="确认提交" />
+
+</LinearLayout>

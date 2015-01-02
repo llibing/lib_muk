@@ -1,8 +1,16 @@
 package com.lib_muk.fragment.main;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.fax.utils.bitmap.BitmapManager;
+import com.fax.utils.view.list.ObjectXAdapter;
+import com.fax.utils.view.list.ObjectXListView;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
+import com.lib_muk.model.HomeAllCourse;
 import com.lib_muk.pulldownmenu.ConstantCategoryMenu;
 import com.lib_muk.pulldownmenu.DeviceUtility;
 import com.lib_muk.pulldownmenu.MenuUtility;
@@ -10,6 +18,7 @@ import com.lib_muk.pulldownmenu.PulldownMenuView;
 import com.lib_muk.pulldownmenu.PulldownMenuView.OnMenuItemClickListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +54,29 @@ public class HomeFragment extends MyFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.home_mk_list, container, false);
 		init(view);
+    	ObjectXListView listView = (ObjectXListView) view.findViewById(android.R.id.list);
+		listView.setPullRefreshEnable(false);
+		listView.setAdapter(new ObjectXAdapter.SingleLocalPageAdapter<HomeAllCourse>() {
+			@Override
+			public View bindView(HomeAllCourse homeAllCourse, int position, View view) {
+				if(view == null){
+					view = View.inflate(context, R.layout.home_muk_list_item, null);
+				}
+//				BitmapManager.bindView(view.findViewById(R.id.allcouerse_imgId),homeAllCourse.getImgId());
+				((TextView)view.findViewById(R.id.allcouerse_name)).setText(homeAllCourse.getAllCourseName());
+				((TextView)view.findViewById(R.id.allCourse_description)).setText(homeAllCourse.getAllCourseDescription());
+				return view;
+			}
+			@Override
+			public void onItemClick(HomeAllCourse h, View view, int position, long id) {
+				super.onItemClick(h, view, position, id);
+			}
+			@Override
+			public List<HomeAllCourse> instanceNewList() throws Exception {
+				return new ArrayList<HomeAllCourse>(Arrays.asList(HomeAllCourse.homeAllCourse_ITEM));
+			}
+		});
+    	
 		return view;
 	}
 	/**

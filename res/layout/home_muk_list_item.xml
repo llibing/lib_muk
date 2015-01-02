@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <ImageView 
+	    android:id="@+id/allcouerse_imgId"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="16dp"
+        android:scaleType="centerCrop"
+	    android:layout_width="150dp"
+	    android:layout_height="90dp"
+	    android:background="@drawable/homeallcourse"/>
+	 <LinearLayout 
+	    android:id="@+id/brand_dealer_layout"
+    	android:orientation="vertical"
+    	android:gravity="center_vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="90dp">
+	    <TextView 
+	        android:id="@+id/allcouerse_name"
+	        android:text="123"
+	        android:textColor="@android:color/background_dark"
+	        android:textSize="18sp"
+	        android:textStyle="bold"
+		    android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+	    <TextView 
+	        android:id="@+id/allCourse_description"
+	        android:text="abc"
+	        android:ellipsize="end"
+	        android:maxLines="10"
+	        android:textColor="@android:color/darker_gray"
+	        android:textSize="13sp"
+	        android:textStyle="bold"
+		    android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+	</LinearLayout>
+
+</LinearLayout>
