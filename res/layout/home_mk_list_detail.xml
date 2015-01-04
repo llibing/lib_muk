@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+   
+  <FrameLayout
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@android:color/white" >
+
+                 <VideoView  
+			        android:id="@+id/video"  
+			        android:layout_width="match_parent"  
+			        android:layout_height="match_parent" />  
+            </FrameLayout>
+
+            <View style="@style/divHorizontal" />
+            
+        
+               <com.lib_muk.fragment.custom_radiogroup.FragmentRadioGroup
+			        android:id="@+id/tabGroup"
+			        android:layout_width="fill_parent"
+			        android:layout_height="38dp"
+			        android:background="#559b9b9b"
+			        android:orientation="horizontal" 
+			        >
+			    </com.lib_muk.fragment.custom_radiogroup.FragmentRadioGroup>
+			   <android.support.v4.view.ViewPager
+			        android:id="@+id/viewPager"
+			        android:layout_width="match_parent"
+			        android:layout_height="0dp"
+			        android:layout_weight="1" 
+			        >
+			    </android.support.v4.view.ViewPager>
+         
+            
+             <View style="@style/divHorizontal" />
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="bottom"
+                android:orientation="horizontal" >
+               
+                <RadioButton
+                    android:id="@+id/bottom_ly_home"
+                    style="@style/BottomBarBtn"
+                    android:drawableTop="@drawable/showmooc_back_icon1"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/bottom_ly_video"
+                    style="@style/BottomBarBtn"
+                    android:drawableTop="@drawable/showmooc_note_icon1"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/bottom_ly_img"
+                    style="@style/BottomBarBtn"
+                    android:drawableTop="@drawable/showmooc_download_icon1"
+                    android:text="" />
+
+
+                <RadioButton
+                    android:id="@+id/bottom_ly_info"
+                    style="@style/BottomBarBtn"
+                    android:drawableTop="@drawable/focus_course_unclick1"
+                    android:text="" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+    </FrameLayout>
+</android.support.v4.widget.DrawerLayout>

@@ -8,8 +8,10 @@ import java.util.List;
 import com.fax.utils.bitmap.BitmapManager;
 import com.fax.utils.view.list.ObjectXAdapter;
 import com.fax.utils.view.list.ObjectXListView;
+import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
+import com.lib_muk.fragment.home.HomeDetailFragment;
 import com.lib_muk.model.HomeAllCourse;
 import com.lib_muk.pulldownmenu.ConstantCategoryMenu;
 import com.lib_muk.pulldownmenu.DeviceUtility;
@@ -70,6 +72,7 @@ public class HomeFragment extends MyFragment{
 			@Override
 			public void onItemClick(HomeAllCourse h, View view, int position, long id) {
 				super.onItemClick(h, view, position, id);
+				addFragment(MyApp.createFragment(HomeDetailFragment.class, h));
 			}
 			@Override
 			public List<HomeAllCourse> instanceNewList() throws Exception {

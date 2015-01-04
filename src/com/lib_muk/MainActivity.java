@@ -27,7 +27,7 @@ public class MainActivity extends FragmentActivity {
 		return instance;
 	}
 	//一种比较新的设置界面或配置界面效果，在主界面左滑或者右滑出现设置界面
-		SlidingMenu menu;
+	public static SlidingMenu menu;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
