@@ -23,7 +23,7 @@
 	        android:id="@+id/allcouerse_name"
 	        android:text="123"
 	        android:textColor="@android:color/background_dark"
-	        android:textSize="18sp"
+	        android:textSize="16sp"
 	        android:textStyle="bold"
 		    android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -31,7 +31,7 @@
 	        android:id="@+id/allCourse_description"
 	        android:text="abc"
 	        android:ellipsize="end"
-	        android:maxLines="10"
+	        android:maxLines="1"
 	        android:textColor="@android:color/darker_gray"
 	        android:textSize="13sp"
 	        android:textStyle="bold"
