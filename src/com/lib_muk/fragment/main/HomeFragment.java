@@ -18,6 +18,9 @@ import com.lib_muk.pulldownmenu.DeviceUtility;
 import com.lib_muk.pulldownmenu.MenuUtility;
 import com.lib_muk.pulldownmenu.PulldownMenuView;
 import com.lib_muk.pulldownmenu.PulldownMenuView.OnMenuItemClickListener;
+
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -127,24 +130,24 @@ public class HomeFragment extends MyFragment{
 		@Override
 		public void onClick(View v) {
 			// 开始显示下拉菜单
-			showPulldownMenu();
-			
-			// TODO Auto-generated method stub
-			pullDownMenu.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-				@Override
-				public void onMenuItemClick(AdapterView<?> parent, View view, int position) {
-					// TODO Auto-generated method stub
-					tvTopic.setText(ConstantCategoryMenu.newsMenuTexts[position]);
-					getFragment(ConstantCategoryMenu.newsBodyRes[position]);
-				}
-				
-				@Override
-				public void hideMenu() {
-					hidePulldownMenu();
-				}
-			});
-			
-			pullDownMenu.show();
+//			showPulldownMenu();
+//			
+//			// TODO Auto-generated method stub
+//			pullDownMenu.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+//				@Override
+//				public void onMenuItemClick(AdapterView<?> parent, View view, int position) {
+//					// TODO Auto-generated method stub
+//					tvTopic.setText(ConstantCategoryMenu.newsMenuTexts[position]);
+//					getFragment(ConstantCategoryMenu.newsBodyRes[position]);
+//				}
+//				
+//				@Override
+//				public void hideMenu() {
+//					hidePulldownMenu();
+//				}
+//			});
+//			
+//			pullDownMenu.show();
 		}
 	};
 	 private OnClickListener imageOnClickListener = new OnClickListener() {

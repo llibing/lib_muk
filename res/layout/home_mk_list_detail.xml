@@ -125,21 +125,21 @@
                 android:gravity="bottom"
                 android:orientation="horizontal" >
                <ImageView
-	              android:id="@+id/bottom_ly_back"
+	              android:id="@+id/bottom_mk_back"
 	              android:layout_width="wrap_content"
 	              android:layout_height="wrap_content"
 	              android:layout_marginRight="10dp"
 	              android:layout_marginLeft="15dp"
 	              android:src="@drawable/showmooc_back_icon1" />
                <ImageView
-	              android:id="@+id/bottom_ly_note"
+	              android:id="@+id/bottom_mk_note"
 	              android:layout_width="wrap_content"
 	              android:layout_height="wrap_content"
 	              android:layout_marginRight="10dp"
 	              android:layout_marginLeft="10dp"
 	              android:src="@drawable/showmooc_note_icon1" />
                <ImageView
-	              android:id="@+id/bottom_ly_download"
+	              android:id="@+id/bottom_mk_download"
 	              android:layout_width="wrap_content"
 	              android:layout_height="wrap_content"
 	              android:layout_marginRight="10dp"

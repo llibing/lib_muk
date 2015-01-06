@@ -18,10 +18,9 @@ import com.lib_muk.videoview.utils.DensityUtil;
 import com.lib_muk.videoview.utils.FullScreenVideoView;
 import com.lib_muk.videoview.utils.LightnessController;
 import com.lib_muk.videoview.utils.VolumnController;
-
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -30,8 +29,8 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,7 +42,6 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,7 +83,7 @@ public class HomeDetailFragment extends MyFragment{
  	private int orginalLight;
     // 音频管理器
  	private AudioManager mAudioManager;
-   // 声音调节Toast
+    // 声音调节Toast
  	private VolumnController volumnController;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -100,25 +98,25 @@ public class HomeDetailFragment extends MyFragment{
 		height = DensityUtil.getHeightInPx(context);
 		threshold = DensityUtil.dip2px(context, 18);
 		orginalLight = LightnessController.getLightness(getActivity());
-		 view.findViewById(R.id.full_btn).setOnClickListener(new View.OnClickListener(){
-				@Override
-				public void onClick(View view) {
-					if(content.getVisibility()==view.VISIBLE){
-					content.setVisibility(View.GONE);
-					foot.setVisibility(View.GONE);
-					RelativeLayout.LayoutParams layoutParams=  
-				              new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);  
-				           mVideo.setLayoutParams(layoutParams);
-				           getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-				          ((ImageView) view.findViewById(R.id.full_btn)).setImageResource(R.drawable.window_bg);
-					}else{
-						content.setVisibility(View.VISIBLE);
-						foot.setVisibility(View.VISIBLE);
-						getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-						((ImageView) view.findViewById(R.id.full_btn)).setImageResource(R.drawable.fullscreen_bg);
-					}
-				}
-			});
+//		 view.findViewById(R.id.full_btn).setOnClickListener(new View.OnClickListener(){
+//				@Override
+//				public void onClick(View view) {
+//					if(content.getVisibility()==view.VISIBLE){
+//					content.setVisibility(View.GONE);
+//					foot.setVisibility(View.GONE);
+//					RelativeLayout.LayoutParams layoutParams=  
+//				              new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);  
+//				           mVideo.setLayoutParams(layoutParams);
+//				           getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//				          ((ImageView) view.findViewById(R.id.full_btn)).setImageResource(R.drawable.window_bg);
+//					}else{
+//						content.setVisibility(View.VISIBLE);
+//						foot.setVisibility(View.VISIBLE);
+//						getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//						((ImageView) view.findViewById(R.id.full_btn)).setImageResource(R.drawable.fullscreen_bg);
+//					}
+//				}
+//			});
 		 
 		mPlay.setOnClickListener(new View.OnClickListener(){
 			@Override
@@ -155,6 +153,15 @@ public class HomeDetailFragment extends MyFragment{
 					i=0;
 				}
 			}
+        });
+        view.findViewById(R.id.bottom_mk_back).setOnClickListener(new View.OnClickListener(){
+        	@Override
+        	public void onClick(View view) {
+    		 Context context=view.getContext();
+				if(!((FragmentActivity) context).getSupportFragmentManager().popBackStackImmediate()){
+					((Activity) context).finish();
+				}
+        	}
         });
         
 		return view;
@@ -196,53 +203,53 @@ public class HomeDetailFragment extends MyFragment{
 	};
 	
 	private void backward(float delataX) {
-		int current = mVideo.getCurrentPosition();
-		int backwardTime = (int) (delataX / width * mVideo.getDuration());
-		int currentTime = current - backwardTime;
-		mVideo.seekTo(currentTime);
-		mSeekBar.setProgress(currentTime * 100 / mVideo.getDuration());
-		mPlayTime.setText(formatTime(currentTime));
+//		int current = mVideo.getCurrentPosition();
+//		int backwardTime = (int) (delataX / width * mVideo.getDuration());
+//		int currentTime = current - backwardTime;
+//		mVideo.seekTo(currentTime);
+//		mSeekBar.setProgress(currentTime * 100 / mVideo.getDuration());
+//		mPlayTime.setText(formatTime(currentTime));
 	}
 
 	private void forward(float delataX) {
-		int current = mVideo.getCurrentPosition();
-		int forwardTime = (int) (delataX / width * mVideo.getDuration());
-		int currentTime = current + forwardTime;
-		mVideo.seekTo(currentTime);
-		mSeekBar.setProgress(currentTime * 100 / mVideo.getDuration());
-		mPlayTime.setText(formatTime(currentTime));
+//		int current = mVideo.getCurrentPosition();
+//		int forwardTime = (int) (delataX / width * mVideo.getDuration());
+//		int currentTime = current + forwardTime;
+//		mVideo.seekTo(currentTime);
+//		mSeekBar.setProgress(currentTime * 100 / mVideo.getDuration());
+//		mPlayTime.setText(formatTime(currentTime));
 	}
 
 	private void volumeDown(float delatY) {
-		int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-		int current = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-		int down = (int) (delatY / height * max * 3);
-		int volume = Math.max(current - down, 0);
-		mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
-		int transformatVolume = volume * 100 / max;
-		volumnController.show(transformatVolume);
+//		int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+//		int current = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+//		int down = (int) (delatY / height * max * 3);
+//		int volume = Math.max(current - down, 0);
+//		mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
+//		int transformatVolume = volume * 100 / max;
+//		volumnController.show(transformatVolume);
 	}
 
 	private void volumeUp(float delatY) {
-		int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-		int current = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-		int up = (int) ((delatY / height) * max * 3);
-		int volume = Math.min(current + up, max);
-		mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
-		int transformatVolume = volume * 100 / max;
-		volumnController.show(transformatVolume);
+//		int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+//		int current = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+//		int up = (int) ((delatY / height) * max * 3);
+//		int volume = Math.min(current + up, max);
+//		mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
+//		int transformatVolume = volume * 100 / max;
+//		volumnController.show(transformatVolume);
 	}
 
 	private void lightDown(float delatY) {
-		int down = (int) (delatY / height * 255 * 3);
-		int transformatLight = LightnessController.getLightness(getActivity()) - down;
-		LightnessController.setLightness(getActivity(), transformatLight);
+//		int down = (int) (delatY / height * 255 * 3);
+//		int transformatLight = LightnessController.getLightness(getActivity()) - down;
+//		LightnessController.setLightness(getActivity(), transformatLight);
 	}
 
 	private void lightUp(float delatY) {
-		int up = (int) (delatY / height * 255 * 3);
-		int transformatLight = LightnessController.getLightness(getActivity()) + up;
-		LightnessController.setLightness(getActivity(), transformatLight);
+//		int up = (int) (delatY / height * 255 * 3);
+//		int transformatLight = LightnessController.getLightness(getActivity()) + up;
+//		LightnessController.setLightness(getActivity(), transformatLight);
 	}
 	
 	@Override

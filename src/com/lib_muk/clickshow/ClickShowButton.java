@@ -5,6 +5,7 @@ import com.lib_muk.R;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.Button;
 
@@ -21,6 +22,7 @@ public class ClickShowButton extends Button{
 
     public ClickShowButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+//        setTypeface(ChangeFont(context));
     }
 
     public ClickShowButton(Context context, AttributeSet attrs, int defStyle) {
@@ -40,5 +42,13 @@ public class ClickShowButton extends Button{
             canvas.drawColor(getContext().getResources().getColor(R.color.alpha_black));
         }
     }
-
+  //字体设置
+//    private  Typeface typeface;
+//    public  final Typeface ChangeFont(Context context) {
+//        if (typeface == null) {
+//            typeface = Typeface.createFromAsset(context.getAssets(),
+//                    "font/kaiti.ttf");
+//        }
+//        return typeface;
+//    }
 }

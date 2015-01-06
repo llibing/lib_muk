@@ -1423,10 +1423,10 @@ containing a value of this type.
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int bottom_layout=0x7f05004e;
-        public static final int bottom_ly_back=0x7f050057;
-        public static final int bottom_ly_download=0x7f050059;
-        public static final int bottom_ly_note=0x7f050058;
         public static final int bottom_mk_attention=0x7f05005a;
+        public static final int bottom_mk_back=0x7f050057;
+        public static final int bottom_mk_download=0x7f050059;
+        public static final int bottom_mk_note=0x7f050058;
         public static final int brand_dealer_layout=0x7f05005c;
         public static final int checkbox=0x7f050033;
         public static final int collapseActionView=0x7f05000d;

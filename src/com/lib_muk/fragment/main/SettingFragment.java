@@ -4,13 +4,13 @@ package com.lib_muk.fragment.main;
 import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
+import com.lib_muk.fragment.setting.DataCleanManager;
 import com.lib_muk.fragment.setting.SettingAboutFragment;
 import com.lib_muk.fragment.setting.SettingFeedbackFragment;
 import com.lib_muk.fragment.setting.SettingGradeFragment;
-import com.lib_muk.model.SlidingItem;
 import com.lib_muk.views.MyTopBar;
-
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +27,19 @@ public class SettingFragment extends MyFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		 View view = inflater.inflate(R.layout.setting_mk_list, container, false);
 		
+		 //缓存清理
+		 view.findViewById(R.id.setting_mk_list_clear).setOnClickListener(new View.OnClickListener(){
+			 @Override
+			 public void onClick(View view) {
+				 DataCleanManager.cleanInternalCache(context);
+				 DataCleanManager.cleanExternalCache(context);
+				 DataCleanManager.cleanDatabases(context);
+				 DataCleanManager.cleanSharedPreference(context);
+				 DataCleanManager.cleanFiles(context);
+				 Toast.makeText(context, "清理缓存成功！", Toast.LENGTH_SHORT).show();
+			 }
+		 });
+		 
 		//满意度调查
 		 view.findViewById(R.id.setting_mk_list_grade).setOnClickListener(new View.OnClickListener(){
 				@Override

@@ -10,7 +10,7 @@ import com.lib_muk.R;
  */
 
 public class HomeAllCourse implements Serializable{
-	public static final HomeAllCourse homeAllCourse_webview1=new HomeAllCourse(0,"http://img.mukewang.com/549bafc10001d8ee06000338-590-330.jpg","Android中的WebView实战详解","123123123123123123123123","http://218.195.208.149/mp4files/607900000041658F/video.mukewang.com/121f25e1-bc67-4161-8453-a0fea616d753/L.mp4");
+	public static final HomeAllCourse homeAllCourse_webview1=new HomeAllCourse(0,"http://img.mukewang.com/549bafc10001d8ee06000338-590-330.jpg","Android中的WebView实战详解","大范甘迪公司的广告撒打发斯蒂芬费","http://218.195.208.149/mp4files/607900000041658F/video.mukewang.com/121f25e1-bc67-4161-8453-a0fea616d753/L.mp4");
 	public static final HomeAllCourse homeAllCourse_webview2=new HomeAllCourse(1,"http://img.mukewang.com/549bafc10001d8ee06000338-590-330.jpg","Android中的WebView实战详解","","http://218.195.208.149/mp4files/607900000041658F/video.mukewang.com/121f25e1-bc67-4161-8453-a0fea616d753/L.mp4");
 	public static final HomeAllCourse homeAllCourse_webview3=new HomeAllCourse(2,"http://img.mukewang.com/549bafc10001d8ee06000338-590-330.jpg","Android中的WebView实战详解","","http://218.195.208.149/mp4files/607900000041658F/video.mukewang.com/121f25e1-bc67-4161-8453-a0fea616d753/L.mp4");
 	public static final HomeAllCourse homeAllCourse_webview4=new HomeAllCourse(3,"http://img.mukewang.com/549bafc10001d8ee06000338-590-330.jpg","Android中的WebView实战详解","","http://218.195.208.149/mp4files/607900000041658F/video.mukewang.com/121f25e1-bc67-4161-8453-a0fea616d753/L.mp4");
