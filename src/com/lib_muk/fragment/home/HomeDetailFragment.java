@@ -21,6 +21,7 @@ import com.lib_muk.videoview.utils.VolumnController;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -42,6 +43,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,7 +68,7 @@ public class HomeDetailFragment extends MyFragment{
     private FullScreenVideoView mVideo;
     // 底部View
  	private View mBottomView;
- 	private LinearLayout content,foot;
+ 	private LinearLayout content,foot,liangdu,yingliang;
     // 视频播放拖动条
  	private SeekBar mSeekBar;
  	private ImageView mPlay;
@@ -78,7 +80,7 @@ public class HomeDetailFragment extends MyFragment{
  	// 视频播放时间
  	private int playTime;
     // 自动隐藏顶部View的时间
- 	private static final int HIDE_TIME = 3000;
+ 	private static final int HIDE_TIME = 5000;
     // 原始屏幕亮度
  	private int orginalLight;
     // 音频管理器
@@ -98,25 +100,28 @@ public class HomeDetailFragment extends MyFragment{
 		height = DensityUtil.getHeightInPx(context);
 		threshold = DensityUtil.dip2px(context, 18);
 		orginalLight = LightnessController.getLightness(getActivity());
-//		 view.findViewById(R.id.full_btn).setOnClickListener(new View.OnClickListener(){
-//				@Override
-//				public void onClick(View view) {
-//					if(content.getVisibility()==view.VISIBLE){
-//					content.setVisibility(View.GONE);
-//					foot.setVisibility(View.GONE);
-//					RelativeLayout.LayoutParams layoutParams=  
-//				              new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);  
-//				           mVideo.setLayoutParams(layoutParams);
-//				           getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//				          ((ImageView) view.findViewById(R.id.full_btn)).setImageResource(R.drawable.window_bg);
-//					}else{
-//						content.setVisibility(View.VISIBLE);
-//						foot.setVisibility(View.VISIBLE);
-//						getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//						((ImageView) view.findViewById(R.id.full_btn)).setImageResource(R.drawable.fullscreen_bg);
-//					}
-//				}
-//			});
+		 view.findViewById(R.id.full_btn).setOnClickListener(new View.OnClickListener(){
+				@Override
+				public void onClick(View view) {
+					if(content.getVisibility()==view.VISIBLE){
+					content.setVisibility(View.GONE);
+					foot.setVisibility(View.GONE);
+					RelativeLayout.LayoutParams layoutParams=  
+				              new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);  
+				           mVideo.setLayoutParams(layoutParams);
+				           getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+				          ((ImageView) view.findViewById(R.id.full_btn)).setImageResource(R.drawable.window_bg);
+				          liangdu.setVisibility(view.VISIBLE);
+				          yingliang.setVisibility(view.VISIBLE);
+				          
+					}else{
+						content.setVisibility(View.VISIBLE);
+						foot.setVisibility(View.VISIBLE);
+						getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+						((ImageView) view.findViewById(R.id.full_btn)).setImageResource(R.drawable.fullscreen_bg);
+					}
+				}
+			});
 		 
 		mPlay.setOnClickListener(new View.OnClickListener(){
 			@Override
@@ -148,7 +153,7 @@ public class HomeDetailFragment extends MyFragment{
 					((ImageView)view.findViewById(R.id.bottom_mk_attention)).setImageResource(R.drawable.focus_course_click1);
 					i=1;
 				}else{
-					Toast.makeText(context, "取消关注！", Toast.LENGTH_SHORT).show();
+					Toast.makeText(context, "已取消关注！", Toast.LENGTH_SHORT).show();
 					((ImageView)view.findViewById(R.id.bottom_mk_attention)).setImageResource(R.drawable.focus_course_unclick1);
 					i=0;
 				}
@@ -203,53 +208,53 @@ public class HomeDetailFragment extends MyFragment{
 	};
 	
 	private void backward(float delataX) {
-//		int current = mVideo.getCurrentPosition();
-//		int backwardTime = (int) (delataX / width * mVideo.getDuration());
-//		int currentTime = current - backwardTime;
-//		mVideo.seekTo(currentTime);
-//		mSeekBar.setProgress(currentTime * 100 / mVideo.getDuration());
-//		mPlayTime.setText(formatTime(currentTime));
+		int current = mVideo.getCurrentPosition();
+		int backwardTime = (int) (delataX / width * mVideo.getDuration());
+		int currentTime = current - backwardTime;
+		mVideo.seekTo(currentTime);
+		mSeekBar.setProgress(currentTime * 100 / mVideo.getDuration());
+		mPlayTime.setText(formatTime(currentTime));
 	}
 
 	private void forward(float delataX) {
-//		int current = mVideo.getCurrentPosition();
-//		int forwardTime = (int) (delataX / width * mVideo.getDuration());
-//		int currentTime = current + forwardTime;
-//		mVideo.seekTo(currentTime);
-//		mSeekBar.setProgress(currentTime * 100 / mVideo.getDuration());
-//		mPlayTime.setText(formatTime(currentTime));
+		int current = mVideo.getCurrentPosition();
+		int forwardTime = (int) (delataX / width * mVideo.getDuration());
+		int currentTime = current + forwardTime;
+		mVideo.seekTo(currentTime);
+		mSeekBar.setProgress(currentTime * 100 / mVideo.getDuration());
+		mPlayTime.setText(formatTime(currentTime));
 	}
 
 	private void volumeDown(float delatY) {
-//		int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-//		int current = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-//		int down = (int) (delatY / height * max * 3);
-//		int volume = Math.max(current - down, 0);
-//		mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
-//		int transformatVolume = volume * 100 / max;
-//		volumnController.show(transformatVolume);
+		int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+		int current = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+		int down = (int) (delatY / height * max * 3);
+		int volume = Math.max(current - down, 0);
+		mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
+		int transformatVolume = volume * 100 / max;
+		volumnController.show(transformatVolume);
 	}
 
 	private void volumeUp(float delatY) {
-//		int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-//		int current = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-//		int up = (int) ((delatY / height) * max * 3);
-//		int volume = Math.min(current + up, max);
-//		mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
-//		int transformatVolume = volume * 100 / max;
-//		volumnController.show(transformatVolume);
+		int max = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+		int current = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+		int up = (int) ((delatY / height) * max * 3);
+		int volume = Math.min(current + up, max);
+		mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
+		int transformatVolume = volume * 100 / max;
+		volumnController.show(transformatVolume);
 	}
 
 	private void lightDown(float delatY) {
-//		int down = (int) (delatY / height * 255 * 3);
-//		int transformatLight = LightnessController.getLightness(getActivity()) - down;
-//		LightnessController.setLightness(getActivity(), transformatLight);
+		int down = (int) (delatY / height * 255 * 3);
+		int transformatLight = LightnessController.getLightness(getActivity()) - down;
+		LightnessController.setLightness(getActivity(), transformatLight);
 	}
 
 	private void lightUp(float delatY) {
-//		int up = (int) (delatY / height * 255 * 3);
-//		int transformatLight = LightnessController.getLightness(getActivity()) + up;
-//		LightnessController.setLightness(getActivity(), transformatLight);
+		int up = (int) (delatY / height * 255 * 3);
+		int transformatLight = LightnessController.getLightness(getActivity()) + up;
+		LightnessController.setLightness(getActivity(), transformatLight);
 	}
 	
 	@Override
@@ -257,6 +262,7 @@ public class HomeDetailFragment extends MyFragment{
 		super.onDestroy();
 		mHandler.removeMessages(0);
 		mHandler.removeCallbacksAndMessages(null);
+		getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
 	@SuppressLint("HandlerLeak")
@@ -442,6 +448,8 @@ public class HomeDetailFragment extends MyFragment{
 				public void onAnimationEnd(Animation animation) {
 					super.onAnimationEnd(animation);
 					mBottomView.setVisibility(View.GONE);
+					liangdu.setVisibility(View.GONE);
+			        yingliang.setVisibility(View.GONE);
 				}
 			});
 			mBottomView.startAnimation(animation);
@@ -481,6 +489,9 @@ public class HomeDetailFragment extends MyFragment{
 		mBottomView = view.findViewById(R.id.bottom_layout);
 		content=(LinearLayout)view.findViewById(R.id.content);
 		foot=(LinearLayout)view.findViewById(R.id.foot);
+		liangdu=(LinearLayout)view.findViewById(R.id.liangdu);
+		yingliang=(LinearLayout)view.findViewById(R.id.yingliang);
+		
 	}
     private void contain(View view){
     	viewPager = (ViewPager) view.findViewById(R.id.viewPager);

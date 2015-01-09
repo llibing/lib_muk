@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.fax.utils.bitmap.BitmapManager;
 import com.fax.utils.view.list.ObjectXAdapter;
 import com.fax.utils.view.list.ObjectXListView;
 import com.lib_muk.MyApp;
@@ -17,18 +16,13 @@ import com.lib_muk.pulldownmenu.ConstantCategoryMenu;
 import com.lib_muk.pulldownmenu.DeviceUtility;
 import com.lib_muk.pulldownmenu.MenuUtility;
 import com.lib_muk.pulldownmenu.PulldownMenuView;
-import com.lib_muk.pulldownmenu.PulldownMenuView.OnMenuItemClickListener;
 
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;

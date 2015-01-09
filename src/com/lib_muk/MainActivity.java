@@ -64,9 +64,10 @@ public class MainActivity extends FragmentActivity {
 		switchFragment(getFragment(position));
 	}
 	public void switchFragment(Fragment fragment){
-		if(fragment instanceof HomeFragment)// 仅在主页面允许滑出，其他页面有菜单键
-			menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);//设置滑动的屏幕范围，该设置为全屏区域都可以滑动
-		else menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);//不允许滑动
+//		if(fragment instanceof HomeFragment)// 仅在主页面允许滑出，其他页面有菜单键
+//			menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);//设置滑动的屏幕范围，该设置为全屏区域都可以滑动
+//		else menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);//不允许滑动
+		 menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 		//右侧SlidingMenu的Fragment
 		getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
 		menu.showContent();
