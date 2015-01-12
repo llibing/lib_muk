@@ -4,6 +4,15 @@
     <style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar">
     </style>
 
+    <!--note样式 -->
+    <style name="home_mk_list_detail_note" parent="android:Theme.Translucent.NoTitleBar">
+        <item name="android:windowAnimationStyle">@style/AnimBottom</item>
+    </style>
+    <style name="AnimBottom" parent="@android:style/Animation">  
+	    <item name="android:windowExitAnimation">@anim/push_imageview_out</item>  
+	   <!--  <item name="android:windowEnterAnimation">@anim/push_imageview_in</item> -->
+    </style>
+    
     <!-- Application theme. -->
     <style name="AppTheme"  parent="AppBaseTheme">
         <item name="android:windowNoTitle">true</item><!--无标题-->

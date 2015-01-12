@@ -9,11 +9,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.lib_muk.MainActivity;
+import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
 import com.lib_muk.fragment.custom_radiogroup.FragmentRadioGroup;
 import com.lib_muk.fragment.custom_radiogroup.FragmentTab;
 import com.lib_muk.model.HomeAllCourse;
+import com.lib_muk.pulldownmenu.NotePopupWindow;
 import com.lib_muk.videoview.utils.DensityUtil;
 import com.lib_muk.videoview.utils.FullScreenVideoView;
 import com.lib_muk.videoview.utils.LightnessController;
@@ -32,9 +34,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -87,6 +91,8 @@ public class HomeDetailFragment extends MyFragment{
  	private AudioManager mAudioManager;
     // 声音调节Toast
  	private VolumnController volumnController;
+ 	//自定义的弹出框类 
+ 	NotePopupWindow notePopupWindow;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.home_mk_list_detail, container, false);
@@ -168,10 +174,37 @@ public class HomeDetailFragment extends MyFragment{
 				}
         	}
         });
+        view.findViewById(R.id.bottom_mk_note).setOnClickListener(new View.OnClickListener(){
+        	@Override
+        	public void onClick(View view) {
+        		  //实例化SelectPicPopupWindow  
+        		notePopupWindow = new NotePopupWindow(getActivity(), itemsOnClick);  
+                //显示窗口  
+        		notePopupWindow.showAtLocation(getActivity().findViewById(R.id.drawerLayout), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0,0); //设置layout在PopupWindow中显示的位置  
+        	}
+        });
         
 		return view;
 		
 	}
+	//为弹出窗口实现监听类  
+    private OnClickListener  itemsOnClick = new OnClickListener(){  
+  
+        public void onClick(View v) {  
+        	notePopupWindow.dismiss();  
+            switch (v.getId()) {  
+            case R.id.cacel:  
+                break;  
+            case R.id.send:                 
+                break;  
+            default:  
+                break;  
+            }  
+              
+                  
+        }  
+          
+    };  
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {

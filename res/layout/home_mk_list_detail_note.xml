@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@android:color/white">
+  
+      <RelativeLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#50000000">
+        <ImageView
+            android:id="@+id/cacel"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:src="@drawable/share_cacel" 
+            android:layout_alignParentLeft="true"/>
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="笔记"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" /> 
+           <ImageView
+            android:id="@+id/send"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="6dp"
+            android:src="@drawable/share_send" 
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+       
+       <EditText
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:gravity="top|left"
+        android:background="@android:drawable/editbox_background_normal"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:hint="记点什么呢……"
+        android:id="@+id/content_txt"
+        android:layout_marginBottom="20dp"
+        />
+      
+    
+</LinearLayout>  
