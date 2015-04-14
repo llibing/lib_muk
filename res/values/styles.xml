@@ -17,6 +17,7 @@
     <style name="AppTheme"  parent="AppBaseTheme">
         <item name="android:windowNoTitle">true</item><!--无标题-->
         <item name="android:windowAnimationStyle">@style/activityAnimation</item>
+        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
     </style>
 <!-- animation 样式 -->
     <style name="activityAnimation" parent="@android:style/Animation">
@@ -80,4 +81,18 @@
 	    <item name="android:layout_weight">1.0</item>  
 		<item name="android:paddingBottom">@dimen/bottom_tab_padding_up</item>
 	</style>
+	
+    <style name="CustomTabPageIndicator" >
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:background">@drawable/tab_indicator</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:fadingEdge">horizontal</item>
+        <item name="android:fadingEdgeLength">8dp</item>
+        <item name="android:textColor">@drawable/selector_tabtext</item>
+    </style>
 </resources>

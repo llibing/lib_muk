@@ -4,6 +4,7 @@ package com.lib_muk.fragment.home;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -12,8 +13,7 @@ import com.lib_muk.MainActivity;
 import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
-import com.lib_muk.fragment.custom_radiogroup.FragmentRadioGroup;
-import com.lib_muk.fragment.custom_radiogroup.FragmentTab;
+import com.lib_muk.fragment.custom_radiogroup.TabPageIndicator;
 import com.lib_muk.model.HomeAllCourse;
 import com.lib_muk.pulldownmenu.NotePopupWindow;
 import com.lib_muk.videoview.utils.DensityUtil;
@@ -25,6 +25,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -32,7 +34,10 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -41,9 +46,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
@@ -62,11 +70,8 @@ public class HomeDetailFragment extends MyFragment{
 	public static final int Request_Home = 1;
 	public static final String TAG ="HomeItemFragment";
 	ViewPager viewPager = null;
-	FragmentRadioGroup mFragmentRadioGroup = null;
 	VideoView videoView;
 	MediaController mController;
-	FragmentTab mCouponTab1 = new FragmentTab();
-	FragmentTab mCouponTab2 = new FragmentTab();
 	private MainActivity m;
 	// 自定义VideoView
     private FullScreenVideoView mVideo;
@@ -93,13 +98,18 @@ public class HomeDetailFragment extends MyFragment{
  	private VolumnController volumnController;
  	//自定义的弹出框类 
  	NotePopupWindow notePopupWindow;
+ 	String[] TITLE;
+ 	
+ 	ViewPager pager;
+	TabPageIndicator indicator;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.home_mk_list_detail, container, false);
 		final HomeAllCourse h = getSerializableExtra(HomeAllCourse.class);
 		m.menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
-		contain(view);
 		init(view);
+		TITLE=new String[]{"详细信息","笔记"};
 		volumnController = new VolumnController(context);
 		mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 		width = DensityUtil.getWidthInPx(context);
@@ -149,7 +159,7 @@ public class HomeDetailFragment extends MyFragment{
 		});
 		mSeekBar.setOnSeekBarChangeListener(mSeekBarChangeListener);
         playVideo("http://video.mukewang.com/08c927f4-c06f-420d-865a-897f741f6350/L.mp4");
-        
+        //关注
         view.findViewById(R.id.bottom_mk_attention).setOnClickListener(new View.OnClickListener(){
         	int i=0;
         	@Override
@@ -165,6 +175,13 @@ public class HomeDetailFragment extends MyFragment{
 				}
 			}
         });
+        view.findViewById(R.id.bottom_mk_download).setOnClickListener(new View.OnClickListener(){
+			 @Override
+			 public void onClick(View view) {
+				 overLayWaitText(view);
+			 }
+		 });
+        //返回
         view.findViewById(R.id.bottom_mk_back).setOnClickListener(new View.OnClickListener(){
         	@Override
         	public void onClick(View view) {
@@ -174,6 +191,7 @@ public class HomeDetailFragment extends MyFragment{
 				}
         	}
         });
+        //笔记
         view.findViewById(R.id.bottom_mk_note).setOnClickListener(new View.OnClickListener(){
         	@Override
         	public void onClick(View view) {
@@ -184,9 +202,54 @@ public class HomeDetailFragment extends MyFragment{
         	}
         });
         
+        /**
+		 * fragment里面嵌套fragment
+		 * 在new FragmentPagerAdapter的时候传进去的fragmentManager不能使用getFragmentManager
+		 * （子fragment用父fragment的FragmentManager）会导致Fragment里面的Viewpaper不显示内容不执行getItem
+		 * 得用getChildFragmentManager()
+		 */
+		FragmentPagerAdapter adapter = new TabPageIndicatorAdapter(getChildFragmentManager());
+        pager.setAdapter(adapter);
+
+        //实例化TabPageIndicator然后设置ViewPager与之关联
+        indicator.setViewPager(pager);
+        
 		return view;
 		
 	}
+	
+	/**
+	 * ViewPager适配器
+	 * @author 
+	 *
+	 */
+    class TabPageIndicatorAdapter extends FragmentPagerAdapter {
+        public TabPageIndicatorAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+        	//新建一个Fragment来展示ViewPager item的内容，并传递参数
+        	Fragment fragment = new HomeDetailViewPagerFragment();
+            Bundle args = new Bundle();  
+            args.putString("item", TITLE[position]);  
+            fragment.setArguments(args);  
+            return fragment;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return TITLE[position % TITLE.length];
+        }
+
+        @Override
+        public int getCount() {
+        	indicator.setVisibility(View.VISIBLE);//数据加载完成后再设置为visiable 否则会报  ViewPager has not been bound 异常
+            return TITLE.length;
+        }
+    }
+	
 	//为弹出窗口实现监听类  
     private OnClickListener  itemsOnClick = new OnClickListener(){  
   
@@ -514,6 +577,8 @@ public class HomeDetailFragment extends MyFragment{
 
 	}
 	private void init(View view){
+		pager = (ViewPager)view.findViewById(R.id.pager);
+		indicator = (TabPageIndicator)view.findViewById(R.id.indicator);
 		mVideo = (FullScreenVideoView)view.findViewById(R.id.videoview);
 		mPlayTime = (TextView) view.findViewById(R.id.play_time);
 		mDurationTime = (TextView) view.findViewById(R.id.total_time);
@@ -526,14 +591,40 @@ public class HomeDetailFragment extends MyFragment{
 		yingliang=(LinearLayout)view.findViewById(R.id.yingliang);
 		
 	}
-    private void contain(View view){
-    	viewPager = (ViewPager) view.findViewById(R.id.viewPager);
-		mFragmentRadioGroup = (FragmentRadioGroup)view.findViewById(R.id.tabGroup);
-		mFragmentRadioGroup.init(getActivity(),viewPager);
-		mCouponTab1.msg = "详细信息";
-		mCouponTab2.msg = "笔记";
-		mFragmentRadioGroup.addFragment(mCouponTab1, "详细信息");
-		mFragmentRadioGroup.addFragment(mCouponTab2, "笔记");
-		viewPager.setAdapter(mFragmentRadioGroup.getAdapter());
-    }
+	private void overLayWaitText(View bottomV){
+		int[] location = new int[2];
+		bottomV.getLocationOnScreen(location);
+		// 获取状态栏高度
+		Rect rect = new Rect(); 
+        getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(rect); 
+        location[1] = location[1] - rect.top;//减去通知栏高度 
+		
+		final Button waitBtn = new Button(context);
+		waitBtn.setPadding(0, 0, 0, 0);
+		waitBtn.setTextColor(Color.WHITE);
+		waitBtn.setText("敬请期待");
+		waitBtn.setTextSize(12);
+		waitBtn.setBackgroundResource(R.color.blace_alpha);
+		
+		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(bottomV.getWidth(), bottomV.getHeight());
+		params.leftMargin = location[0];//X坐标
+		params.topMargin = location[1];//Y坐标
+		getActivity().addContentView(waitBtn, params);
+		/** 设置透明度渐变动画 */ 
+		AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
+		alphaAnimation.setDuration(500);//设置动画持续时间 
+		alphaAnimation.setStartOffset(500);//执行前的等待时间 
+		alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+			@Override
+			public void onAnimationStart(Animation animation) {
+			}
+			public void onAnimationRepeat(Animation animation) {
+			}
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				((ViewGroup)waitBtn.getParent()).removeView(waitBtn);//从viewGroup中移除waitBtn
+			}
+		});
+		waitBtn.startAnimation(alphaAnimation);
+	}
 }
