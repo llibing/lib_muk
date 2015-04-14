@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent" >
+    
+  <LinearLayout
+    android:id="@+id/layout1"
+    android:layout_width="fill_parent"  
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:minHeight="40dp">  
+       <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
+        
+          <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" >
+            <ImageView 
+			    android:id="@+id/allcouerse_imgId"
+		        android:layout_marginRight="6dp"
+		        android:scaleType="centerCrop"
+			    android:layout_width="150dp"
+			    android:layout_height="90dp"
+			    android:background="@drawable/homeallcourse"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/allcouerse_imgId"
+            android:orientation="vertical"
+            android:layout_centerVertical="true">
+            <TextView
+                android:id="@+id/teacher_name"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"/>
+	         <TextView
+                android:id="@+id/createtime"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:textColor="@color/gray" />
+            <TextView
+               android:id="@+id/coursename"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:textSize="16dp" />
+            </LinearLayout>
+        </RelativeLayout>
+            
+    <!--    <TextView
+            android:id="@+id/allCourse_description"  
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"  
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="15sp" 
+            android:textColor="@color/blace_alpha"/>  -->            
+       </LinearLayout>
+       
+    </LinearLayout>
+	 
+</LinearLayout>

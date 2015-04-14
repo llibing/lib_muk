@@ -8,6 +8,7 @@ import com.fax.utils.view.list.ObjectXListView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.lib_muk.fragment.main.DownloadCourseFragment;
 import com.lib_muk.fragment.main.HomeFragment;
+import com.lib_muk.fragment.main.HomeWorkFragment;
 import com.lib_muk.fragment.main.MyCourseFragment;
 import com.lib_muk.fragment.main.MyInfoFragment;
 import com.lib_muk.fragment.main.SettingFragment;
@@ -123,8 +124,9 @@ public class MainActivity extends FragmentActivity {
 		case 1: return new HomeFragment();
 		case 2: return new MyCourseFragment();
 		case 3: return new MyInfoFragment();
-		case 4: return new DownloadCourseFragment();
-		case 5: return new SettingFragment();
+		case 4: return new HomeWorkFragment();
+		case 5: return new DownloadCourseFragment();
+		case 6: return new SettingFragment();
 		}
 		return new HomeFragment();
 	}

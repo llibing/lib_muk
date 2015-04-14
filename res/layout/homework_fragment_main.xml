@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+   
+    
+    <!-- <com.fax.utils.view.list.ObjectXListView 
+        android:id="@android:id/list"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1"/> -->
+    
+  
+ <!-- 测试开始-->
+ <LinearLayout
+    android:id="@+id/homework"
     android:padding="10dp"
-    android:gravity="center_vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
@@ -10,7 +24,7 @@
         android:layout_marginLeft="6dp"
         android:layout_marginRight="16dp"
         android:scaleType="centerCrop"
-	    android:layout_width="150dp"
+	    android:layout_width="120dp"
 	    android:layout_height="90dp"
 	    android:background="@drawable/homeallcourse"/>
 	 <LinearLayout 
@@ -21,7 +35,7 @@
 	    android:layout_height="90dp">
 	    <TextView 
 	        android:id="@+id/allcouerse_name"
-	        android:text=""
+	        android:text="计算器"
 	        android:textColor="@android:color/background_dark"
 	        android:textSize="16sp"
 	        android:textStyle="bold"
@@ -29,14 +43,17 @@
             android:layout_height="wrap_content"/>
 	    <TextView 
 	        android:id="@+id/allCourse_description"
-	        android:text="abc"
 	        android:ellipsize="end"
 	        android:maxLines="1"
 	        android:textColor="@android:color/darker_gray"
 	        android:textSize="13sp"
 	        android:textStyle="bold"
+	        android:text="根据前面视频的学习，运用java语言实现一个计算器功能"
 		    android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 	</LinearLayout>
 
+</LinearLayout>
+
+ <!-- 测试结束 --> 
 </LinearLayout>

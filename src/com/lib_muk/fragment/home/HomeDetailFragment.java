@@ -148,7 +148,7 @@ public class HomeDetailFragment extends MyFragment{
 			}
 		});
 		mSeekBar.setOnSeekBarChangeListener(mSeekBarChangeListener);
-        playVideo(h.getVideoSrc());
+        playVideo("http://video.mukewang.com/08c927f4-c06f-420d-865a-897f741f6350/L.mp4");
         
         view.findViewById(R.id.bottom_mk_attention).setOnClickListener(new View.OnClickListener(){
         	int i=0;

@@ -6,9 +6,16 @@
     <color name="gray_light">#b4b4b4</color>
     <color name="gray">#595656</color>
     <color name="gray_press">#353333</color>
+    <color name="blace_alpha">#656565</color>
     <color name="window_bg">#e5e5e5</color>
+    <color name="textcolor_gray">#c7c7cc</color>
+    <color name="topic_text_background">#ececec</color>
+    <color name="progressBar_green">#46c700</color>
     <color name="gray_btn_bg">#bababa</color>
     <color name="background_gray">#CFCFCF</color>
     <color name="background_white">#FFFFFF</color>
     <color name="background_blace">#000000</color>
+    <color name="button_background_press">#ffa200</color>
+    <color name="button_background">#ff7800</color>
+    <color name="detail_bg">#f7f7f7</color>
 </resources>

@@ -28,6 +28,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -38,7 +39,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class MyApp extends Application {
-	public static final String Host="";
+	public static final String Host="http://218.195.213.187:8080/xjnumuke/";
 	public static final String AddUrl=""; 
 	private static MyApp myApp;
 	public static final String TAG ="MyApp";
@@ -55,7 +56,14 @@ public class MyApp extends Application {
 		return PreferenceManager.getDefaultSharedPreferences(myApp);
 	}
 	
-	
+	public static boolean hasSdcard(){
+        String state = Environment.getExternalStorageState();
+        if(state.equals(Environment.MEDIA_MOUNTED)){
+                return true;
+        }else{
+                return false;
+        }
+    }
 	
 	/**
 	 * 判断是否已经写入过这个key，没写入就现在写入
