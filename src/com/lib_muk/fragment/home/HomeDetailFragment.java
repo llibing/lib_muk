@@ -15,6 +15,9 @@ import com.lib_muk.MyFragment;
 import com.lib_muk.R;
 import com.lib_muk.fragment.custom_radiogroup.TabPageIndicator;
 import com.lib_muk.model.HomeAllCourse;
+import com.lib_muk.model.UnitEntity;
+import com.lib_muk.model.VideoEntityList.VideoEntity;
+import com.lib_muk.model.WorkPageList.WorkPage;
 import com.lib_muk.pulldownmenu.NotePopupWindow;
 import com.lib_muk.videoview.utils.DensityUtil;
 import com.lib_muk.videoview.utils.FullScreenVideoView;
@@ -102,6 +105,7 @@ public class HomeDetailFragment extends MyFragment{
  	
  	ViewPager pager;
 	TabPageIndicator indicator;
+	VideoEntity v;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -109,6 +113,7 @@ public class HomeDetailFragment extends MyFragment{
 		final HomeAllCourse h = getSerializableExtra(HomeAllCourse.class);
 		m.menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
 		init(view);
+		v=(VideoEntity) getArguments().getSerializable(VideoEntity.class.getName());
 		TITLE=new String[]{"详细信息","笔记"};
 		volumnController = new VolumnController(context);
 		mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
@@ -158,7 +163,7 @@ public class HomeDetailFragment extends MyFragment{
 			}
 		});
 		mSeekBar.setOnSeekBarChangeListener(mSeekBarChangeListener);
-        playVideo("http://video.mukewang.com/08c927f4-c06f-420d-865a-897f741f6350/L.mp4");
+        playVideo(MyApp.videoUrl+v.getVideosrc());
         //关注
         view.findViewById(R.id.bottom_mk_attention).setOnClickListener(new View.OnClickListener(){
         	int i=0;
@@ -234,6 +239,7 @@ public class HomeDetailFragment extends MyFragment{
         	Fragment fragment = new HomeDetailViewPagerFragment();
             Bundle args = new Bundle();  
             args.putString("item", TITLE[position]);  
+            args.putSerializable("videoEntity", v);
             fragment.setArguments(args);  
             return fragment;
         }

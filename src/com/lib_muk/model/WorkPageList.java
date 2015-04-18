@@ -33,10 +33,18 @@ public class WorkPageList implements Serializable{
 		private String state;
 		private String whatlearn;
 		private String coursenote;
+		private String  teacherEntity_teacherabout;
 		private String courseabout;
 		private String teacherEntity_Id;
 		private String coursename;
-		private String teacherEntity_teachername;
+		private String teacherEntity_realName;
+		
+		public String getTeacherEntity_teacherabout() {
+			return teacherEntity_teacherabout;
+		}
+		public void setTeacherEntity_teacherabout(String teacherEntity_teacherabout) {
+			this.teacherEntity_teacherabout = teacherEntity_teacherabout;
+		}
 		public String getCreatetime() {
 			return createtime;
 		}
@@ -109,13 +117,11 @@ public class WorkPageList implements Serializable{
 		public void setCoursename(String coursename) {
 			this.coursename = coursename;
 		}
-		public String getTeacherEntity_teachername() {
-			return teacherEntity_teachername;
+		public String getTeacherEntity_realName() {
+			return teacherEntity_realName;
 		}
-		public void setTeacherEntity_teachername(String teacherEntity_teachername) {
-			this.teacherEntity_teachername = teacherEntity_teachername;
+		public void setTeacherEntity_realName(String teacherEntity_realName) {
+			this.teacherEntity_realName = teacherEntity_realName;
 		}
-		
 	}
-	
 }

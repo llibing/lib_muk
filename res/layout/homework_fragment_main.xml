@@ -5,15 +5,16 @@
     android:orientation="vertical">
    
     
-    <!-- <com.fax.utils.view.list.ObjectXListView 
+     <com.fax.utils.view.list.ObjectXListView 
         android:id="@android:id/list"
 	    android:layout_width="match_parent"
+	    android:divider="@color/gray"
 	    android:layout_height="0dp"
-	    android:layout_weight="1"/> -->
+	    android:layout_weight="1"/>
     
   
  <!-- 测试开始-->
- <LinearLayout
+ <!-- <LinearLayout
     android:id="@+id/homework"
     android:padding="10dp"
     android:layout_width="match_parent"
@@ -53,7 +54,7 @@
             android:layout_height="wrap_content"/>
 	</LinearLayout>
 
-</LinearLayout>
+</LinearLayout> -->
 
  <!-- 测试结束 --> 
 </LinearLayout>

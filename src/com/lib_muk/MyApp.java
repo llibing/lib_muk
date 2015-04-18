@@ -39,7 +39,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class MyApp extends Application {
-	public static final String Host="http://218.195.213.187:8080/xjnumuke/";
+	public static final String Host="http://218.195.213.183:8080/xjnumuke/";
+	public static final String videoUrl="http://218.195.213.183:80/";
 	public static final String AddUrl=""; 
 	private static MyApp myApp;
 	public static final String TAG ="MyApp";

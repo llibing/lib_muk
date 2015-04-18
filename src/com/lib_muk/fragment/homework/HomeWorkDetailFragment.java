@@ -9,6 +9,8 @@ import com.fax.utils.bitmap.BitmapManager;
 import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
+import com.lib_muk.model.UnitEntity;
+import com.lib_muk.model.HomeworkEntityList.HomeworkEntity;
 import com.lib_muk.videoview.utils.NativeImageLoader;
 import com.lib_muk.videoview.utils.NativeImageLoader.NativeImageCallBack;
 import com.lib_muk.views.MyTopBar;
@@ -68,12 +70,19 @@ public class HomeWorkDetailFragment extends MyFragment{
 	
 	
 	//headerworkpager
-		TextView title_name,title_time,title_detail,total_time;
+		TextView title_name,title_time,title_detail,total_time,detail;
 	
+		HomeworkEntity h;
+		
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.homework_fragment_main_detal, container, false);
 		init(view);
+		h=(HomeworkEntity) getArguments().getSerializable(HomeworkEntity.class.getName());
+		title_name.setText(h.getUnitEntity_coursesEntity_coursename());
+		title_time.setText(h.getHomeworkname());
+		detail.setText(h.getHomeworkcontent());
+		
 		//上传作业
 				view.findViewById(R.id.commit_button).setOnClickListener(new OnClickListener() {
 					@Override
@@ -129,6 +138,7 @@ public class HomeWorkDetailFragment extends MyFragment{
 		//headerworkpager
 		title_name = (TextView) view.findViewById(R.id.title_name);
 		title_time = (TextView) view.findViewById(R.id.title_time);
+		detail = (TextView) view.findViewById(R.id.detail);
 		
 		
 		myHorizontal = (LinearLayout) view.findViewById(R.id.myHorizontal);

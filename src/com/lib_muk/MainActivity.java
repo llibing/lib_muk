@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.fax.utils.task.ResultAsyncTask;
 import com.fax.utils.view.list.ObjectXAdapter;
 import com.fax.utils.view.list.ObjectXListView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -18,7 +19,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
@@ -90,6 +93,14 @@ public class MainActivity extends FragmentActivity {
 	String[] menus;
 	private View createMenu(){
 		View menuView=View.inflate(this, R.layout.activity_home_menu, null);
+		LinearLayout login=(LinearLayout) menuView.findViewById(R.id.login);
+		login.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				
+			}
+		});
+		
 		ObjectXListView listView = (ObjectXListView) menuView.findViewById(android.R.id.list);
 		listView.setPullRefreshEnable(false);
 		listView.setVerticalScrollBarEnabled(false);
@@ -116,6 +127,11 @@ public class MainActivity extends FragmentActivity {
 		
 		return menuView;
 	}
+	
+//	private void Login(){
+//		new ResultAsyncTask<T>() {
+//		};
+//	}
 	
 	private int nowShowingFragmentPosition=-1;
 	private Fragment getFragment(int position){
