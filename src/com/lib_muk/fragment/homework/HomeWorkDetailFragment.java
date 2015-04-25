@@ -4,11 +4,23 @@ package com.lib_muk.fragment.homework;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import org.apache.http.NameValuePair;
+import org.apache.http.entity.mime.content.ContentBody;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.message.BasicNameValuePair;
 import com.fax.utils.bitmap.BitmapManager;
+import com.fax.utils.http.HttpUtils;
+import com.fax.utils.task.ResultAsyncTask;
+import com.google.gson.Gson;
+import com.lib_muk.MainActivity;
 import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
+import com.lib_muk.model.LoginEntity;
 import com.lib_muk.model.UnitEntity;
 import com.lib_muk.model.HomeworkEntityList.HomeworkEntity;
 import com.lib_muk.videoview.utils.NativeImageLoader;
@@ -91,6 +103,29 @@ public class HomeWorkDetailFragment extends MyFragment{
 								Toast.makeText(context, "请先填写作业！", Toast.LENGTH_SHORT).show();
 								return;
 							}
+							new ResultAsyncTask<LoginEntity>(context) {
+								@Override
+								protected LoginEntity doInBackground(Void... params) {
+									LinkedHashMap<String, ContentBody> forms=new LinkedHashMap<String, ContentBody>();
+									try {
+										Charset charset = Charset.forName("UTF-8");
+										forms.put("media_resource[avatar]", new FileBody(new File(pathlist.get(0).toString()), "image/*"));
+										forms.put("media_resource[description]", new StringBody(topic_nam.getText().toString(), charset));
+									    String json=HttpUtils.reqForPost(MyApp.Host+"home_worksmedia_resources", forms);
+//										return new Gson().fromJson(json, SubmitHomeWorkEntity.class);
+									} catch (Exception e) {
+									}
+									return null;
+								}
+								@Override
+								protected void onPostExecuteSuc(LoginEntity result) {
+									
+								}
+								@Override
+								protected void onPostExecuteFail(LoginEntity result) {
+
+								}
+							}.setProgressDialog().execute();
 					   }
 				});
 			view.findViewById(R.id.camera).setOnClickListener(new OnClickListener() {

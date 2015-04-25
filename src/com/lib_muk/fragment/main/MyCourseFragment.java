@@ -40,15 +40,15 @@ public class MyCourseFragment extends MyFragment{
 					view = View.inflate(context, R.layout.home_muk_list_item, null);
 				}
 //				BitmapManager.bindView(view.findViewById(R.id.allcouerse_imgId),homeAllCourse.getImgId());
-					((TextView)view.findViewById(R.id.allcouerse_name)).setText(homeAllCourse.getAllCourseName());
-					((TextView)view.findViewById(R.id.allCourse_description)).setText(homeAllCourse.getAllCourseDescription());
+//				((TextView)view.findViewById(R.id.name)).setText(v.getVideoname());
+//				((TextView)view.findViewById(R.id.description)).setText(Integer.parseInt(v.getVideotime())/60+"分"+Integer.parseInt(v.getVideotime())%60+"秒");
 					
 				return view;
 			}
 			@Override
 			public void onItemClick(HomeAllCourse h, View view, int position, long id) {
 				super.onItemClick(h, view, position, id);
-				addFragment(MyApp.createFragment(HomeDetailFragment.class, h));
+//				addFragment(MyApp.createFragment(HomeDetailFragment.class, h));
 			}
 			@Override
 			public List<HomeAllCourse> instanceNewList() throws Exception {

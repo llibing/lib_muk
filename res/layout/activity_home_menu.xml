@@ -10,22 +10,25 @@
      <LinearLayout 
          android:id="@+id/login"
 	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
+	    android:layout_height="180dp"
 	    android:layout_gravity="center"
 	    android:orientation="horizontal" >
-	     <ImageView 
+	     <com.lib_muk.videoview.utils.RoundImageView 
+	         android:id="@+id/person_header"
 	         android:layout_gravity="center"
-		    android:id="@+id/home_ly_list_item_logoimg"
-		    android:layout_width="wrap_content"
-	        android:layout_height="180dp" 
+		    android:layout_width="80dp"
+	        android:layout_height="80dp" 
 	        android:src="@drawable/qq_login"/>
 	     <TextView 
+	         android:id="@+id/person_name"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="20dp"
 	        android:layout_gravity="center"
-	        android:text="立即登录"
-	        android:textSize="15dp"
+	        android:textColor="@color/white"
+	        android:textStyle="bold"
+	        android:text="点击登录"
+	        android:textSize="16dp"
 	         />
 	     </LinearLayout>
 	     <com.fax.utils.view.list.ObjectXListView 

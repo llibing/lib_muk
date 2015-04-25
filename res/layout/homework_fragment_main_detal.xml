@@ -49,7 +49,7 @@
                android:id="@+id/detail"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:textColor="@color/textcolor_gray"
+               android:textColor="@color/blace_alpha"
                android:text="用你所学的知识实现一个android版的计算器"
                />
 
@@ -76,10 +76,11 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginBottom="10dp"
-          android:background="@color/topic_text_background"
+          
           android:gravity="center_horizontal"
           android:orientation="vertical"
           android:padding="5dp" >
+         <!--  android:background="@color/topic_text_background" -->
 
           <TextView
               android:id="@+id/camera_text"
@@ -142,7 +143,7 @@
               android:layout_gravity="center_vertical"
               android:layout_marginLeft="6dp"
               android:background="@null"
-              android:hint="学生留言"
+              android:hint="用户留言"
               android:imeOptions="actionDone"
               android:paddingLeft="6dp"
               android:singleLine="true"

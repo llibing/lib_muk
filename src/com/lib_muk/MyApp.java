@@ -42,6 +42,10 @@ public class MyApp extends Application {
 	public static final String Host="http://218.195.213.183:8080/xjnumuke/";
 	public static final String videoUrl="http://218.195.213.183:80/";
 	public static final String AddUrl=""; 
+	public static final String Key_LoginName="loginName";
+	public static final String Key_LoginPasswd="loginPasswd";
+	public static final String Key_Person_headerurl="person_headerurl";
+	public static final String USER_ID="user_id";
 	private static MyApp myApp;
 	public static final String TAG ="MyApp";
 	@Override

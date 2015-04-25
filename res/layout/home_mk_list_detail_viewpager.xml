@@ -13,6 +13,10 @@
             android:visibility="gone"
             android:gravity="center"
             android:textSize="18dp" />
+    <!-- <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            > -->
     <LinearLayout 
         android:id="@+id/NOExpandableListView"
         android:layout_width="match_parent"
@@ -20,6 +24,7 @@
         android:visibility="gone"
         android:layout_height="match_parent"
         >
+        
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,21 +78,24 @@
               android:gravity="center"
               android:textSize="18dp" />
       
+      
       </LinearLayout>
+     <!--  </ScrollView> -->
+    
+    
       <LinearLayout 
-        android:id="@+id/ExpandableListView"
+        android:id="@+id/mylistView"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:visibility="gone"
         android:layout_height="match_parent"
         >
-		<com.fax.utils.view.list.ExpandListHeadContain 
-		       android:layout_width="match_parent"
-		       android:layout_height="match_parent">
-		    <ExpandableListView 
-		        android:id="@android:id/list"
-		        android:layout_width="match_parent"
-		        android:layout_height="match_parent"/>
-		</com.fax.utils.view.list.ExpandListHeadContain>
+		<com.fax.utils.view.list.ObjectXListView 
+        android:id="@android:id/list"
+        android:dividerHeight="0dp"
+        android:divider="@color/gray"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1"/>
 	</LinearLayout>
 </LinearLayout>

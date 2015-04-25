@@ -9,6 +9,7 @@ import com.fax.utils.view.list.ObjectXAdapter;
 import com.fax.utils.view.list.ObjectXAdapter.SingleLocalPageAdapter;
 import com.fax.utils.view.list.ObjectXListView;
 import com.google.gson.Gson;
+import com.lib_muk.MainActivity;
 import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
@@ -19,6 +20,8 @@ import com.lib_muk.model.CourseCatlogList.CourseCatlog;
 import com.lib_muk.model.HomeAllCourse;
 import com.lib_muk.model.WorkPageList;
 import com.lib_muk.model.WorkPageList.WorkPage;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +34,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -55,12 +59,15 @@ public class HomeFragment extends MyFragment{
 		ObjectXListView listView;
 		String courseCatlogEntityId=null;
 		String url;
+		SharedPreferences sp;
+		
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.home_mk_list, container, false);
 		init(view);
     	listView = (ObjectXListView) view.findViewById(android.R.id.list);
 		listView.setPullRefreshEnable(false);
+		sp=MyApp.getDefaultSp();
 		
 		if(courseCatlogEntityId==null){
 			url=MyApp.Host+"coursesController.do?listdatagrid&field=id,planstageEntity_Id,courseCatlogEntity_Id,teacherEntity_Id,teacherEntity_realName,coursename,imgsrc,createtime,courseabout,coursediffcult,coursenote,whatlearn";
@@ -169,7 +176,12 @@ public class HomeFragment extends MyFragment{
 			@Override
 			public void onItemClick(WorkPage workPage, View view, int position, long id) {
 				super.onItemClick(workPage, view, position, id);
-				addFragment(MyApp.createFragment(HomeUnitFragment.class, workPage));
+				if(!sp.getString(MyApp.USER_ID, null).equals("")){
+					addFragment(MyApp.createFragment(HomeUnitFragment.class, workPage));
+				}else{
+					Toast.makeText(context, "对不起！请先登录！", Toast.LENGTH_SHORT).show();
+				}
+				
 			}
 			@Override
 			public List<WorkPage> instanceNewList(String json) throws Exception {

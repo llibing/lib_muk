@@ -24,6 +24,7 @@ import com.lib_muk.model.WorkPageList;
 import com.lib_muk.model.WorkPageList.WorkPage;
 import com.lib_muk.views.MyTopBar;
 
+import android.R.integer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,7 +71,7 @@ public class HomeVideoListFragment extends MyFragment{
 							view=View.inflate(context, R.layout.common_list_item, null);
 						}
 						((TextView)view.findViewById(R.id.name)).setText(v.getVideoname());
-						((TextView)view.findViewById(R.id.description)).setText(v.getVideotime()+"秒");
+						((TextView)view.findViewById(R.id.description)).setText(Integer.parseInt(v.getVideotime())/60+"分"+Integer.parseInt(v.getVideotime())%60+"秒");
 						return view;
 					}
 					@Override
