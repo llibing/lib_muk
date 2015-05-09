@@ -176,7 +176,7 @@ public class HomeFragment extends MyFragment{
 			@Override
 			public void onItemClick(WorkPage workPage, View view, int position, long id) {
 				super.onItemClick(workPage, view, position, id);
-				if(!sp.getString(MyApp.USER_ID, null).equals("")){
+				if(!sp.getString(MyApp.USER_ID, "").equals("")){
 					addFragment(MyApp.createFragment(HomeUnitFragment.class, workPage));
 				}else{
 					Toast.makeText(context, "对不起！请先登录！", Toast.LENGTH_SHORT).show();

@@ -266,7 +266,7 @@ public class MainActivity extends FragmentActivity {
 					sp.edit().putString(MyApp.Key_LoginPasswd, password).putString(MyApp.Key_LoginName, username).putString(MyApp.USER_ID, result.getObj().getId()).putString(MyApp.Key_Person_headerurl, result.getObj().getImgsrc()).commit();
 					Toast.makeText(context, "用户登录成功！", Toast.LENGTH_SHORT).show();
 				}else{
-					sp.edit().putString(MyApp.Key_LoginPasswd, "").putString(MyApp.Key_LoginName, "").putString(MyApp.USER_ID, "").putString(MyApp.Key_Person_headerurl, "").commit();
+//					sp.edit().putString(MyApp.Key_LoginPasswd, "").putString(MyApp.Key_LoginName, "").putString(MyApp.USER_ID, "").putString(MyApp.Key_Person_headerurl, "").commit();
 					Toast.makeText(context, "对不起！用户名密码出错！", Toast.LENGTH_SHORT).show();
 				}
 			}
