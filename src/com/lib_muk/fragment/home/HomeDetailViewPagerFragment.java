@@ -26,15 +26,15 @@ import com.lib_muk.R;
 import com.lib_muk.model.NotesEntityList;
 import com.lib_muk.model.NotesEntityList.NotesEntity;
 import com.lib_muk.model.UnitAndVideoList;
+import com.lib_muk.model.VideoEntity;
 import com.lib_muk.model.WorkPageList;
-import com.lib_muk.model.VideoEntityList.VideoEntity;
 import com.lib_muk.model.WorkPageList.WorkPage;
 
 
 
 
 /**
- * TODO
+ * 
  * 全部课程内页 --viewpager*/
 
 public class HomeDetailViewPagerFragment extends MyFragment{
@@ -56,7 +56,7 @@ public class HomeDetailViewPagerFragment extends MyFragment{
 		item =  mBundle.getString("item");
 		v=(VideoEntity) getArguments().getSerializable("videoEntity");
 		listView = (ObjectXListView) view.findViewById(android.R.id.list);
-		listView.setPullRefreshEnable(false);
+		listView.setPullRefreshEnable(true);
 		listView.setPullLoadEnable(false);
 		if(item.equals("详细信息")){
 			NOExpandableListView.setVisibility(View.VISIBLE);
@@ -83,8 +83,8 @@ public class HomeDetailViewPagerFragment extends MyFragment{
 				if(view == null){
 					view = View.inflate(context, R.layout.common_list_item, null);
 					((RelativeLayout)view.findViewById(R.id.studentInfo)).setVisibility(View.VISIBLE);
-					((TextView)view.findViewById(R.id.person_name)).setText(n.getStudentEntity_studentname());
 				}
+				((TextView)view.findViewById(R.id.person_name)).setText(n.getStudentEntity_studentname());
 				((TextView)view.findViewById(R.id.name)).setText(n.getNotescontent());
 				return view;
 			}

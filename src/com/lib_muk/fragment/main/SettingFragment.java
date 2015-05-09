@@ -40,7 +40,7 @@ public class SettingFragment extends MyFragment{
 			 }
 		 });
 		 
-		//满意度调查
+		/*//满意度调查
 		 view.findViewById(R.id.setting_mk_list_grade).setOnClickListener(new View.OnClickListener(){
 				@Override
 				public void onClick(View view) {
@@ -53,7 +53,7 @@ public class SettingFragment extends MyFragment{
 			public void onClick(View view) {
 				addFragment(MyApp.createFragment(SettingFeedbackFragment.class));
 			}
-		});
+		});*/
 		//检查更新
 		view.findViewById(R.id.setting_mk_list_update).setOnClickListener(new View.OnClickListener(){
 			@Override

@@ -1,10 +1,25 @@
 package com.lib_muk.pulldownmenu;
 
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import com.fax.utils.http.HttpUtils;
+import com.fax.utils.task.ResultAsyncTask;
+import com.google.gson.Gson;
+import com.lib_muk.MyApp;
 import com.lib_muk.R;
+import com.lib_muk.model.CommitEntity;
+import com.lib_muk.model.NoteEntity;
+import com.lib_muk.model.VideoEntity;
 
 import android.app.Activity;  
 import android.content.Context;  
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;  
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;  
 import android.view.MotionEvent;  
 import android.view.View;  
@@ -14,6 +29,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;  
+import android.widget.Toast;
 
 public class NotePopupWindow extends PopupWindow {  
 	  
@@ -21,8 +37,9 @@ public class NotePopupWindow extends PopupWindow {
     private ImageView cacel, send;  
     public EditText content_txt;  
     private View mMenuView;
-  
-    public NotePopupWindow(Activity context,OnClickListener itemsOnClick) {  
+    SharedPreferences sp=MyApp.getDefaultSp();
+    
+    public NotePopupWindow(final Activity context,OnClickListener itemsOnClick,final VideoEntity videoEntity) {  
         super(context);  
         LayoutInflater inflater = (LayoutInflater) context  
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
@@ -38,7 +55,42 @@ public class NotePopupWindow extends PopupWindow {
             }  
         });  
         //设置按钮监听  
-        send.setOnClickListener(itemsOnClick);  
+//        send.setOnClickListener(itemsOnClick);  
+        send.setOnClickListener(new OnClickListener() {  
+            public void onClick(View v) {
+            	if (TextUtils.isEmpty(content_txt.getText().toString())) {
+					Toast.makeText(context, "请先填写笔记！", Toast.LENGTH_SHORT).show();
+					return;
+				}
+                //销毁弹出框  
+//                dismiss();  
+            	new ResultAsyncTask<NoteEntity>(context) {
+        			@Override
+        			protected NoteEntity doInBackground(Void... params) {
+        				ArrayList<NameValuePair> pairslist=new ArrayList<NameValuePair>();
+        				pairslist.add(new BasicNameValuePair("notescontent",content_txt.getText().toString()));
+        				pairslist.add(new BasicNameValuePair("studentEntity.id",sp.getString(MyApp.USER_ID, null)));
+        				pairslist.add(new BasicNameValuePair("videoEntity.Id",videoEntity.getId()));
+        				String json=HttpUtils.reqForPost(MyApp.Host+"notesController.do?uploadnote", pairslist);
+        				try {
+        					return new Gson().fromJson(json, NoteEntity.class);
+        				} catch (Exception e) {
+        				}
+        				return null;
+        			}
+        			@Override
+        			protected void onPostExecuteSuc(NoteEntity result) {
+        				if(result.getSuccess().equals("true")){
+        					Toast.makeText(context, "笔记提交成功！", Toast.LENGTH_SHORT).show();
+        					dismiss();
+        				}
+        			}
+        			@Override
+        			protected void onPostExecuteFail(NoteEntity result) {
+        			}
+        		}.setProgressDialog().execute();
+            }  
+        });
         //设置SelectPicPopupWindow的View  
         this.setContentView(mMenuView);  
         //设置SelectPicPopupWindow弹出窗体的宽  

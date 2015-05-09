@@ -1,44 +1,22 @@
 package com.lib_muk.fragment.home;
 
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import com.fax.utils.bitmap.BitmapManager;
 import com.fax.utils.view.list.ObjectXAdapter;
-import com.fax.utils.view.list.ObjectXAdapter.SingleLocalPageAdapter;
 import com.fax.utils.view.list.ObjectXListView;
 import com.google.gson.Gson;
 import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
 import com.lib_muk.fragment.home.HomeDetailFragment;
-import com.lib_muk.model.UnitEntityList;
-import com.lib_muk.model.CourseCatlogList;
-import com.lib_muk.model.CourseCatlogList.CourseCatlog;
-import com.lib_muk.model.HomeAllCourse;
 import com.lib_muk.model.UnitEntity;
 import com.lib_muk.model.VideoEntityList;
-import com.lib_muk.model.VideoEntityList.VideoEntity;
-import com.lib_muk.model.WorkPageList;
-import com.lib_muk.model.WorkPageList.WorkPage;
+import com.lib_muk.model.VideoEntity;
 import com.lib_muk.views.MyTopBar;
-
-import android.R.integer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -77,7 +55,13 @@ public class HomeVideoListFragment extends MyFragment{
 					@Override
 					public void onItemClick(VideoEntity v, View view, int position, long id) {
 						super.onItemClick(v, view, position, id);
-						addFragment(MyApp.createFragment(HomeDetailFragment.class, v));
+						HomeDetailFragment hd=new HomeDetailFragment();
+						hd.setTargetFragment(HomeVideoListFragment.this, 1);
+						Bundle args = new Bundle();
+						args.putSerializable("videoEntity", v);
+						hd.setArguments(args);
+						addFragment(hd);
+//						addFragment(MyApp.createFragment(HomeDetailFragment.class, v));
 					}
 					@Override
 					public List<VideoEntity> instanceNewList(String json) throws Exception {

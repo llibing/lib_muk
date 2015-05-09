@@ -4,7 +4,6 @@ package com.lib_muk.fragment.myinfo;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
 import com.lib_muk.model.MessagesEntityList.MessagesEntity;
-import com.lib_muk.model.VideoEntityList.VideoEntity;
 import com.lib_muk.views.MyTopBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;

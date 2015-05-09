@@ -8,15 +8,28 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import com.fax.utils.http.HttpUtils;
+import com.fax.utils.task.ResultAsyncTask;
+import com.google.gson.Gson;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.lib_muk.MainActivity;
 import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
 import com.lib_muk.fragment.custom_radiogroup.TabPageIndicator;
+import com.lib_muk.fragment.main.MyCourseFragment;
+import com.lib_muk.model.CommitEntity;
+import com.lib_muk.model.GuanzhuEntity;
+import com.lib_muk.model.GuanzhuEntity.JsonStr;
 import com.lib_muk.model.HomeAllCourse;
+import com.lib_muk.model.NoteEntity;
+import com.lib_muk.model.StudentVideoEntityList.StudentVideoEntity;
 import com.lib_muk.model.UnitEntity;
-import com.lib_muk.model.VideoEntityList.VideoEntity;
+import com.lib_muk.model.VideoEntity;
 import com.lib_muk.model.WorkPageList.WorkPage;
 import com.lib_muk.pulldownmenu.NotePopupWindow;
 import com.lib_muk.videoview.utils.DensityUtil;
@@ -26,6 +39,7 @@ import com.lib_muk.videoview.utils.VolumnController;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -106,14 +120,26 @@ public class HomeDetailFragment extends MyFragment{
  	ViewPager pager;
 	TabPageIndicator indicator;
 	VideoEntity v;
-	
+	StudentVideoEntity sv;
+	String url="";
+	SharedPreferences sp=MyApp.getDefaultSp();;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.home_mk_list_detail, container, false);
-		final HomeAllCourse h = getSerializableExtra(HomeAllCourse.class);
 		m.menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
 		init(view);
-		v=(VideoEntity) getArguments().getSerializable(VideoEntity.class.getName());
+		if(getTargetFragment() instanceof HomeVideoListFragment){
+			v=(VideoEntity) getArguments().getSerializable("videoEntity");
+			url=v.getVideosrc();
+		}else if(getTargetFragment() instanceof MyCourseFragment){
+			sv=(StudentVideoEntity) getArguments().getSerializable("studentVideoEntity");
+		    url=sv.getVideoentity_videosrc();
+		    v=new VideoEntity();
+		    v.setId(sv.getVideoentity_Id());
+		    v.setUnitEntity_coursesEntity_courseabout(sv.getVideoentity_unitEntity_coursesEntity_courseabout());
+		    v.setUnitEntity_coursesEntity_teacherEntity_realName(sv.getVideoentity_unitEntity_coursesEntity_teacherEntity_realName());
+		    v.setUnitEntity_coursesEntity_teacherEntity_teacherabout(sv.getVideoentity_unitEntity_coursesEntity_teacherEntity_teacherabout());
+		}
 		TITLE=new String[]{"详细信息","笔记"};
 		volumnController = new VolumnController(context);
 		mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
@@ -163,21 +189,50 @@ public class HomeDetailFragment extends MyFragment{
 			}
 		});
 		mSeekBar.setOnSeekBarChangeListener(mSeekBarChangeListener);
-        playVideo(MyApp.videoUrl+v.getVideosrc());
+        playVideo(MyApp.videoUrl+url);
         //关注
         view.findViewById(R.id.bottom_mk_attention).setOnClickListener(new View.OnClickListener(){
         	int i=0;
         	@Override
-			public void onClick(View view) {
-				if(i==0){
-					Toast.makeText(context, "关注成功！", Toast.LENGTH_SHORT).show();
-					((ImageView)view.findViewById(R.id.bottom_mk_attention)).setImageResource(R.drawable.focus_course_click1);
-					i=1;
-				}else{
-					Toast.makeText(context, "已取消关注！", Toast.LENGTH_SHORT).show();
-					((ImageView)view.findViewById(R.id.bottom_mk_attention)).setImageResource(R.drawable.focus_course_unclick1);
-					i=0;
-				}
+			public void onClick(final View view) {
+//				if(i==0){
+//					Toast.makeText(context, "关注成功！", Toast.LENGTH_SHORT).show();
+//					((ImageView)view.findViewById(R.id.bottom_mk_attention)).setImageResource(R.drawable.focus_course_click1);
+//					i=1;
+//				}else{
+//					Toast.makeText(context, "已取消关注！", Toast.LENGTH_SHORT).show();
+//					((ImageView)view.findViewById(R.id.bottom_mk_attention)).setImageResource(R.drawable.focus_course_unclick1);
+//					i=0;
+//				}
+				new ResultAsyncTask<JsonStr>(context) {
+        			@Override
+        			protected JsonStr doInBackground(Void... params) {
+        				ArrayList<NameValuePair> pairslist=new ArrayList<NameValuePair>();
+        				pairslist.add(new BasicNameValuePair("studentid",sp.getString(MyApp.USER_ID, null)));
+        				pairslist.add(new BasicNameValuePair("videoid",v.getId()));
+        				String json=HttpUtils.reqForPost(MyApp.Host+"studentvideoController.do?guanzhu", pairslist);
+        				try {
+        					return new Gson().fromJson(new Gson().fromJson(json, CommitEntity.class).getJsonStr(), JsonStr.class);
+        				} catch (Exception e) {
+        				}
+        				return null;
+        			}
+        			@Override
+        			protected void onPostExecuteSuc(JsonStr result) {
+        				if(result.getSuccess().equals("true")){
+        					Toast.makeText(context, "关注成功！", Toast.LENGTH_SHORT).show();
+        					((ImageView)view.findViewById(R.id.bottom_mk_attention)).setImageResource(R.drawable.focus_course_click1);
+        				}
+        				if(result.getSuccess().equals("false")){
+        					Toast.makeText(context, "此视频已关注！", Toast.LENGTH_SHORT).show();
+        					((ImageView)view.findViewById(R.id.bottom_mk_attention)).setImageResource(R.drawable.focus_course_click1);
+        				}
+        			}
+        			@Override
+        			protected void onPostExecuteFail(JsonStr result) {
+        			}
+        		}.execute();
+				
 			}
         });
         view.findViewById(R.id.bottom_mk_download).setOnClickListener(new View.OnClickListener(){
@@ -201,7 +256,7 @@ public class HomeDetailFragment extends MyFragment{
         	@Override
         	public void onClick(View view) {
         		  //实例化SelectPicPopupWindow  
-        		notePopupWindow = new NotePopupWindow(getActivity(), itemsOnClick);  
+        		notePopupWindow = new NotePopupWindow(getActivity(), itemsOnClick,v);  
                 //显示窗口  
         		notePopupWindow.showAtLocation(getActivity().findViewById(R.id.drawerLayout), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0,0); //设置layout在PopupWindow中显示的位置  
         	}

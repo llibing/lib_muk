@@ -20,9 +20,11 @@ import com.lib_muk.MainActivity;
 import com.lib_muk.MyApp;
 import com.lib_muk.MyFragment;
 import com.lib_muk.R;
+import com.lib_muk.model.CommitEntity;
 import com.lib_muk.model.LoginEntity;
 import com.lib_muk.model.UnitEntity;
 import com.lib_muk.model.HomeworkEntityList.HomeworkEntity;
+import com.lib_muk.model.Uploadcommit;
 import com.lib_muk.videoview.utils.NativeImageLoader;
 import com.lib_muk.videoview.utils.NativeImageLoader.NativeImageCallBack;
 import com.lib_muk.views.MyTopBar;
@@ -30,6 +32,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -40,6 +43,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +83,7 @@ public class HomeWorkDetailFragment extends MyFragment{
 	TextView camera_text;
 	EditText topic_nam,content_txt;
 	File personalFile;
-	
+	SharedPreferences sp;
 	
 	//headerworkpager
 		TextView title_name,title_time,title_detail,total_time,detail;
@@ -94,7 +98,7 @@ public class HomeWorkDetailFragment extends MyFragment{
 		title_name.setText(h.getUnitEntity_coursesEntity_coursename());
 		title_time.setText(h.getHomeworkname());
 		detail.setText(h.getHomeworkcontent());
-		
+		sp=MyApp.getDefaultSp();
 		//上传作业
 				view.findViewById(R.id.commit_button).setOnClickListener(new OnClickListener() {
 					@Override
@@ -103,26 +107,29 @@ public class HomeWorkDetailFragment extends MyFragment{
 								Toast.makeText(context, "请先填写作业！", Toast.LENGTH_SHORT).show();
 								return;
 							}
-							new ResultAsyncTask<LoginEntity>(context) {
+							new ResultAsyncTask<Uploadcommit>(context) {
 								@Override
-								protected LoginEntity doInBackground(Void... params) {
+								protected Uploadcommit doInBackground(Void... params) {
 									LinkedHashMap<String, ContentBody> forms=new LinkedHashMap<String, ContentBody>();
 									try {
 										Charset charset = Charset.forName("UTF-8");
-										forms.put("media_resource[avatar]", new FileBody(new File(pathlist.get(0).toString()), "image/*"));
-										forms.put("media_resource[description]", new StringBody(topic_nam.getText().toString(), charset));
-									    String json=HttpUtils.reqForPost(MyApp.Host+"home_worksmedia_resources", forms);
-//										return new Gson().fromJson(json, SubmitHomeWorkEntity.class);
+										forms.put("formFile", new FileBody(new File(pathlist.get(0).toString()), "image/*"));
+									    String json=HttpUtils.reqForPost(MyApp.Host+"plug-in/ueditor/jsp/uploadcommit.jsp", forms);
+										return new Gson().fromJson(json, Uploadcommit.class);
 									} catch (Exception e) {
 									}
 									return null;
 								}
 								@Override
-								protected void onPostExecuteSuc(LoginEntity result) {
-									
+								protected void onPostExecuteSuc(Uploadcommit result) {
+									if(result.getState().equals("SUCCESS")){
+										commit(result.getUrl());
+									}else{
+										Toast.makeText(context, "对不起！提交作业失败！", Toast.LENGTH_SHORT).show();
+									}
 								}
 								@Override
-								protected void onPostExecuteFail(LoginEntity result) {
+								protected void onPostExecuteFail(Uploadcommit result) {
 
 								}
 							}.setProgressDialog().execute();
@@ -137,6 +144,35 @@ public class HomeWorkDetailFragment extends MyFragment{
 		return new MyTopBar(context).setLeftBack().setTitle("作业内容").setContentView(view);
 	}
 	
+	private void commit(final String url){
+		new ResultAsyncTask<CommitEntity>(context) {
+			@Override
+			protected CommitEntity doInBackground(Void... params) {
+				ArrayList<NameValuePair> pairslist=new ArrayList<NameValuePair>();
+				pairslist.add(new BasicNameValuePair("commitattach", url));
+				pairslist.add(new BasicNameValuePair("commitcontent",topic_nam.getText().toString()));
+				pairslist.add(new BasicNameValuePair("studentEntity.id",sp.getString(MyApp.USER_ID, null)));
+				pairslist.add(new BasicNameValuePair("homeworkEntity.id",h.getId()));
+				String json=HttpUtils.reqForPost(MyApp.Host+"commitHomeworkController.do?save", pairslist);
+//					return new Gson().fromJson(json, SubmitHomeWorkEntity.class);
+				try {
+					return new Gson().fromJson(json, CommitEntity.class);
+				} catch (Exception e) {
+				}
+				return null;
+			}
+			@Override
+			protected void onPostExecuteSuc(CommitEntity result) {
+				if(result.getSuccess().equals("true")){
+					Toast.makeText(context, "作业提交成功！", Toast.LENGTH_SHORT).show();
+					backStack();
+				}
+			}
+			@Override
+			protected void onPostExecuteFail(CommitEntity result) {
+			}
+		}.setProgressDialog().execute();
+	}
 	
 	private void TakingPicturesShowDialog() {
 		new AlertDialog.Builder(context)

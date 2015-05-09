@@ -126,7 +126,7 @@ public class MainActivity extends FragmentActivity {
 		person_header=(ImageView) menuView.findViewById(R.id.person_header);
 		//登录
 //		Login(person_name,person_header,sp.getString(MyApp.Key_LoginName, null),sp.getString(MyApp.Key_LoginPasswd, null));
-		if(!sp.getString(MyApp.Key_Person_headerurl, null).equals("")){
+		if(!sp.getString(MyApp.Key_Person_headerurl, "").equals("")){
 			BitmapManager.bindView(person_header,sp.getString(MyApp.Key_Person_headerurl, null));
 			person_name.setText(sp.getString(MyApp.Key_LoginName, null));
 		}
@@ -153,7 +153,7 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onItemClick(SlidingItem t, View view, int position, long id) {
 				super.onItemClick(t, view, position, id);
-				if(!sp.getString(MyApp.Key_LoginName, null).equals("")){
+				if(!sp.getString(MyApp.Key_LoginName, "").equals("")){
 					switchFragment(getFragment(position));
 				}else{
 					Toast.makeText(MainActivity.this, "对不起！请先登录！", Toast.LENGTH_SHORT).show();
